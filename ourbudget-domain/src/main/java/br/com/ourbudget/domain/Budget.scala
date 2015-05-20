@@ -1,5 +1,5 @@
 package br.com.ourbudget.domain
 
-class Bugdet {
+class Bugdet(val name: String , val value: BigDecimal) {
 
 }
