@@ -1,5 +1,6 @@
 package br.com.ourbudget.domain
 
-class Bugdet(val name: String , val value: BigDecimal) {
+@SerialVersionUID(100L)
+class Bugdet(val name: String , val value: Double) extends Serializable{
 
 }
