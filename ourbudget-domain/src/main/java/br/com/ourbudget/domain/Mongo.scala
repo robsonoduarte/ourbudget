@@ -7,7 +7,7 @@ import com.mongodb.casbah.commons.MongoDBObject
 
 object Mongo extends App {
 
-  val mongoClient = MongoClient("52.10.140.124");
+  val mongoClient = MongoClient("52.24.192.174");
 
 
   val db =  mongoClient("ourbudget");
@@ -15,11 +15,23 @@ object Mongo extends App {
 
   var coll = db("ourbudget")
 
-  val a = MongoDBObject("1" -> new Bugdet("teste", 2.0))
+
+
+
+  val b = new Bugdet("teste", 2.0)
+
+
+
+
+
+  val a = MongoDBObject("1" -> new Teste)
+
 
   coll.insert(a)
 
+
   db.collectionNames().foreach {print(_)}
+
 
 
 }
