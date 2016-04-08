@@ -1,6 +1,12 @@
 package br.com.ourbudget.domain
 
-/**
- * Created by Thiago Pereira on 7/24/15.
- */
-case class Budget(name: String, value: BigDecimal)
+
+
+class Budget(val name: String, val revenues: List[Revenue] = List()) {
+
+  def addRevenue(revenue: Revenue): Budget = {
+    val copy = new Budget(name, revenues.::(revenue) )
+    copy
+  }
+
+}
