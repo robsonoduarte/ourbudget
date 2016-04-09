@@ -4,7 +4,8 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 
 
-class BudgetTest extends FlatSpec with Matchers {
+
+class BudgetSpec extends FlatSpec with Matchers {
 
 
 
