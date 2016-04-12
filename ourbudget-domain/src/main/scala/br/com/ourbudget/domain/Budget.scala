@@ -13,9 +13,18 @@ class Budget(val name: String, val revenues: Array[Revenue] = Array(), val expen
 
 
 
-  def +(revenue: Revenue) = new Budget(name, revenues.+:(revenue), expenditures )
+  def +(revenue: Revenue) = {
+    val copy = new Budget(name, revenues.+:(revenue), expenditures )
+    copy id = id
+    copy
+  }
 
-  def +(expenditure: Expenditure) = new Budget(name, revenues, expenditures.+:(expenditure) )
+
+  def +(expenditure: Expenditure) = {
+    val copy = new Budget(name, revenues, expenditures.+:(expenditure) )
+		copy id = id
+		copy
+  }
 
 
 

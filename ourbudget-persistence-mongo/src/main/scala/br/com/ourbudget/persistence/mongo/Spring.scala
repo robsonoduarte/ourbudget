@@ -27,17 +27,18 @@ object Spring extends App {
   val mongoOps = new MongoTemplate(new Mongo("192.168.99.100"), "ourbudget")
 
 
-  mongoOps insert budget
+ // mongoOps save(budget, "budgets")
 
 
-  var b1 =  mongoOps.findOne(new Query(where("name").is("Travel")), classOf[Budget])
+  val b1 =  mongoOps.findOne(new Query(where("name").is("Travel")), classOf[Budget], "budgets")
 
 
-  var b2 = b1 + Revenue("Salary", 400.00)
+  val b2 = b1 + Revenue("Salary", 400.00)
+  val b3 = b2 + Expenditure("Hotel", 400.00)
 
 
 
-  mongoOps.save(b2)
+  mongoOps.save(b3, "budgets")
 
 
 
