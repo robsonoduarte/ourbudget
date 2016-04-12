@@ -10,6 +10,7 @@ import br.com.ourbudget.domain.Revenue
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
+import br.com.ourbudget.domain.Expenditure
 
 object Spring extends App {
 
@@ -32,7 +33,7 @@ object Spring extends App {
   var b1 =  mongoOps.findOne(new Query(where("name").is("Travel")), classOf[Budget])
 
 
-  var b2 = b1.addRevenue(new Revenue("Salary", 400.00))
+  var b2 = b1 + Revenue("Salary", 400.00)
 
 
 
@@ -45,11 +46,6 @@ object Spring extends App {
 
 
 
-
-
-
-
-
-  def budget = new Budget("Travel", Array(new Revenue("Hotel", 100.00),new Revenue("AirPlane", 300.00)))
+  def budget = new Budget("Travel", Array(Revenue("Investment", 100.00),Revenue("Dolar", 300.00)), Array(Expenditure("Air Plane", 100.00)))
 
 }
