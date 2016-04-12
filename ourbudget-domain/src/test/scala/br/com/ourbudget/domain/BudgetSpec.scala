@@ -5,29 +5,26 @@ import org.scalatest.Matchers
 
 
 
+
 class BudgetSpec extends FlatSpec with Matchers {
 
 
 
-  //budget revenue expenditure
+
+	  val budget = new Budget("Travel", Array(Revenue("Investment", 100.0)), Array(Expenditure("Air Plane", 100.0)))
 
 
-    def fixture = new {
-        val budget = new Budget("Travel")
+
+
+
+
+
+    "it" should "return one new copy of Budget when addd new Revenue" in {
+
+      val copy = budget + Revenue("Salary", 100.0)
+
+      copy should not be theSameInstanceAs(budget)
     }
-
-
-
-
-
-
-    "it" should "return one new copy of Budget" in {
-
-      val copy = fixture.budget.addRevenue(new Revenue("Hotel", 100.0))
-
-      copy should not equal fixture.budget
-    }
-
 
 
 
@@ -35,11 +32,25 @@ class BudgetSpec extends FlatSpec with Matchers {
 
    "it" should "return one new copy of Budget with new Revenues in List of Revenues " in {
 
-    	val copy = fixture.budget.addRevenue(new Revenue("Hotel", 100.0))
+    	val copy = budget + Revenue("Salary", 100.0)
 
       val revenues =  copy revenues
+      val expenditure = copy expenditures
 
-    	revenues should have length 1
+    	revenues should have length 2
+    	expenditure should have length 1
+   }
+
+
+
+
+
+
+   "it" should "return one new copy of Budget when addd new Expenditure" in {
+
+		 val copy = budget + Expenditure("Hotel", 100.0)
+
+		 copy should not be theSameInstanceAs(budget)
    }
 
 
@@ -49,12 +60,16 @@ class BudgetSpec extends FlatSpec with Matchers {
 
 
 
+   "it" should "return one new copy of Budget with new Expenditure in List of Expenditures " in {
 
+	   val copy = budget + Expenditure("Hotel", 100.0)
 
+	   val revenues =  copy revenues
+	   val expenditures = copy expenditures
 
-
-
-
+	   revenues should have length 1
+	   expenditures should have length 2
+   }
 
 
 
