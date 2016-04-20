@@ -6,20 +6,27 @@
 	<groupId>br.com.ourbudget</groupId>
 	<artifactId>ourbudget-api</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<scala.version>2.11.7</scala.version>
+		<scalatra.version>2.4.0</scalatra.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 
 
-
-
 	<dependencies>
+
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>${scala.version}</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.scalatest</groupId>
@@ -35,16 +42,34 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
+			<groupId>org.scalatra</groupId>
+			<artifactId>scalatra_2.11</artifactId>
+			<version>${scalatra.version}</version>
 		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>org.scalatra</groupId>
+			<artifactId>scalatra-scalate_2.11</artifactId>
+			<version>${scalatra.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 
 		<dependency>
 			<groupId>br.com.ourbudget</groupId>
 			<artifactId>ourbudget-domain</artifactId>
 			<version>0.1.0-SNAPSHOT</version>
 		</dependency>
+
 
 	</dependencies>
 
