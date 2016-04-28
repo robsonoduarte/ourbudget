@@ -7,11 +7,15 @@ import org.scalatra._
 
 import org.json4s.{DefaultFormats, Formats}
 import org.scalatra.json._
+import br.com.ourbudget.persistence.mongo.Repository
 
 
 class OurBudget extends ScalatraServlet with JacksonJsonSupport{
 
    protected implicit lazy val jsonFormats: Formats = DefaultFormats
+
+
+   var repo = new Repository
 
 
   before(){
@@ -25,7 +29,8 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport{
 
   post("/add"){
     	var budget = parsedBody.extract[Budget]
-    	print(budget)
+    	var x = repo save budget
+    	x
   }
 
 
