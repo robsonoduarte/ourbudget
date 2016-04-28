@@ -1,4 +1,4 @@
-package br.com.ourbudget.persistence.api;
+package br.com.ourbudget.api;
 
 public class OurBudgetTest {
 

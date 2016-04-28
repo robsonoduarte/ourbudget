@@ -1,4 +1,4 @@
-package br.com.ourbudget.persistence.api
+package br.com.ourbudget.api
 
 import br.com.ourbudget.domain.Budget
 import org.scalatra._
