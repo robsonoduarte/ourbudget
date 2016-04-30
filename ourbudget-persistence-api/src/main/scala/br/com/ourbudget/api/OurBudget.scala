@@ -53,21 +53,20 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport{
 
 
 
+  put("/expenditure/:id"){
+    params("id")
+  }
+
+
+
+
+
 
 
 
 
 
   private def save[B](b: B) = repo save(b)
-
-
-
-
-
-
-
-
-
 
 
 
