@@ -16,16 +16,46 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val budget = new Budget("Test")
+  val budget = "{\"name\": \"Travel\"}"
 
 
-
-   test("should add new budget and return json with the id"){
-     post("/new", budget toString){
+   test("should create new Budget and return json with the id"){
+     post("/new", budget ){
        status should equal(200)
-       body should startWith ("{\"name\":\"Test\",\"revenues\":[],\"expenditures\":[],\"id\":")
+       body should startWith ("{\"name\":\"Travel\",\"revenues\":[],\"expenditures\":[],\"id\":")
      }
   }
+
+
+
+
+
+  val revenue = "{ \"name\": \"Salary\", \"value\": 400 }"
+
+
+  test("should add the Revenue in the Budget searchingpa by id"){
+     put("/revenue/572405504c7439ab86008716", revenue ){
+       status should equal(200)
+       body should startWith ("{\"name\":\"Travel\",\"revenues\":[{\"name\":\"Salary\",\"value\":400.0}")
+     }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
