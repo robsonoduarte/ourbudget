@@ -16,20 +16,16 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val budget = new Budget("Test", Array(Revenue("Test", 10.0)), Array(Expenditure("Test", 20.0)))
+  val budget = new Budget("Test")
 
 
 
-
-
-   test("should add new budget"){
-     post("/add", budget toString){
+   test("should add new budget and return json with the id"){
+     post("/new", budget toString){
        status should equal(200)
-       //body should contain (budget toString )
+       body should startWith ("{\"name\":\"Test\",\"revenues\":[],\"expenditures\":[],\"id\":")
      }
-
   }
-
 
 
 

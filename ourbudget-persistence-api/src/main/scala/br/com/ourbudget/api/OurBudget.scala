@@ -27,7 +27,7 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport{
 
 
 
-  post("/add"){
+  post("/new"){
     	var budget = parsedBody.extract[Budget]
     	repo save budget
     	budget
