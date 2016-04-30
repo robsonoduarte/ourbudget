@@ -17,6 +17,9 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
+  // TODO: for continue the tests, we will add support of JacksonJson maybe with trait... ( searching first )
+
+
   val budget = "{\"name\": \"Travel\"}"
 
    test("should create new Budget and return json with the id"){
