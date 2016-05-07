@@ -14,6 +14,8 @@ import java.sql.Date
 
 class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
+  var id : String = null
+
   implicit val formats = DefaultFormats
 
 
@@ -21,28 +23,36 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
+
   val budget = "{\"name\": \"Travel\"}"
 
    test("should create new Budget and return json with the id"){
-     post("/new", budget ){
 
-       status should equal(200)
+     post("/new", budget ){
 
        val json = parse(body)
 
-       (json \ "id").extract[String] should not be empty
-       (json \ "name").extract[String] should  be("Travel")
-
-
-       // validate the format of json
-       json.extract[Budget]
-
+       // the id is the private attr in budget
+       id = (json \ "id").extract[String]
+       id should not be empty
      }
+
 
   }
 
 
 
+
+
+   test("should create new Budget"){
+
+     post("/new", budget ){
+       val budget = parse(body).extract[Budget]
+       budget.name should be("Travel")
+     }
+
+
+  }
 
 
 
@@ -55,20 +65,13 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
   test("should add the Revenue in the Budget searching by id"){
-     put("/revenue/572414f77e78ea6998893167", revenue ){
-       status should equal(200)
+     put(s"/revenue/$id", revenue ){
 
+        val budget = parse(body).extract[Budget]
 
-       val json = parse(body)
-
-
-       (json \ "revenues").extract[Array[Revenue]]
-
-       /*body should startWith ("{\"name\":\"Travel\",\"revenues\":[{\"name\":\"Salary\",\"value\":400.0}")*/
+        budget.revenues should contain (Revenue("Salary", 400))
 
      }
-
-
 
   }
 
@@ -82,29 +85,15 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  val expenditure = "{ \"name\": \"Salary\", \"value\": 400 }"
+  val expenditure = "{ \"name\": \"Salary\", \"value\": 200 }"
 
 
   test("should add the Expenditure in the Budget searching by id"){
-     put("/expenditure/572414f77e78ea6998893167", expenditure ){
-       status should equal(200)
-       body should equal("572414f77e78ea6998893167")
+     put(s"/expenditure/$id", expenditure ){
+
+        val budget = parse(body).extract[Budget]
+
+        budget.revenues should contain (Revenue("Salary", 400))
      }
   }
 
