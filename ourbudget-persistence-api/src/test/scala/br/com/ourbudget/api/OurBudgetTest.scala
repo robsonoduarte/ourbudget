@@ -85,7 +85,7 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val expenditure = "{ \"name\": \"Salary\", \"value\": 200 }"
+  val expenditure = "{ \"name\": \"Hotel\", \"value\": 200 }"
 
 
   test("should add the Expenditure in the Budget searching by id"){
@@ -93,7 +93,7 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
         val budget = parse(body).extract[Budget]
 
-        budget.revenues should contain (Revenue("Salary", 400))
+        budget.expenditures should contain (Expenditure("Hotel", 200))
      }
   }
 
