@@ -8,14 +8,15 @@
 <ion-content>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
+      <ion-icon name="beer" item-left></ion-icon>
+      {{item.name}}
       <div class="item-note" item-right>
-        {{item.note}}
+        NO
       </div>
     </button>
   </ion-list>
   <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+    You navigated here from <b>{{selectedItem.name}}</b>
   </div>
+  <div id="error"></div>
 </ion-content>
