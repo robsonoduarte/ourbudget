@@ -16,9 +16,6 @@ class BudgetSpec extends FlatSpec with Matchers {
 
 
 
-
-
-
     "it" should "return one new copy of Budget when addd new Revenue" in {
 
       val copy = budget + Revenue("Salary", 100.0)

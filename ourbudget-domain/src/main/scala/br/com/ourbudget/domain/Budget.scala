@@ -13,6 +13,7 @@ class Budget(val name: String, val revenues: Array[Revenue] = Array(), val expen
 
 
 
+
   def +(revenue: Revenue) = {
     val copy = new Budget(name, revenues.+:(revenue), expenditures )
     copy id = id
