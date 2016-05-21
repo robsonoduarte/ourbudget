@@ -25,7 +25,7 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'Our Budgets', component: ListPage }
     ];
 
     // make HelloIonicPage the root (or first) page
