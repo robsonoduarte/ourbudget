@@ -104,6 +104,16 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
+  test("should get all Budgets in base"){ // the simple get method to test the first integration with App mobile
+     get("/all"){
+       val budgets =  parse(body).extract[List[Budget]]
+       /*budgets should have size 2*/  // FIXME: we need make one solution to data base integration tests........
+     }
+  }
+
+
+
+
 
 
 
