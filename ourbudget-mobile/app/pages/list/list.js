@@ -6,7 +6,11 @@ import {ItemDetailsPage} from '../item-details/item-details';
   templateUrl: 'build/pages/list/list.html'
 })
 
+
+
+
 export class ListPage {
+
 
   static get parameters() {
     return [[NavController], [NavParams]];
@@ -18,43 +22,25 @@ export class ListPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    /*this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane', 'american-football', 'boat', 'bluetooth', 'build'];*/
+    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane','american-football', 'boat', 'bluetooth', 'build'];
 
-
-
-    try{
-    	var rulesRequest = new XMLHttpRequest();
-
-    	rulesRequest.open("GET", "http://192.168.0.3:8080/ourbudget/all", true);
-    	rulesRequest.send()
-
-
-    	this.items = JSON.parse(rulesRequest.responseText);
-    	alert(items)
-
-
-    }catch(err){
-    	 document.getElementById("error").innerHTML = err.message;
-    }
-
-
-
-
-
-/*    for(let i = 1; i < 11; i++) {
+    this.items = [];
+    for(let i = 1; i < 11; i++) {
       this.items.push({
         title: 'Item ' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
-    }*/
+    }
 
 
 
-
+    var oReq = new XMLHttpRequest();
+    oReq.onload = reqListener;
+    oReq.open("get", "http://192.168.99.100:8080/ourbudget/all", true);
+    oReq.send();
 
   }
-
 
   itemTapped(event, item) {
      this.nav.push(ItemDetailsPage, {
@@ -63,6 +49,11 @@ export class ListPage {
   }
 
 
-
-
 }
+
+
+function reqListener () {
+	 var budgets = JSON.parse(this.responseText)
+	 console.log(budgets)
+};
+
