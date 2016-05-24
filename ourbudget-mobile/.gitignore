@@ -5,3 +5,5 @@ node_modules/
 platforms/
 plugins/
 /.tern-project
+/.settings/
+/.project
