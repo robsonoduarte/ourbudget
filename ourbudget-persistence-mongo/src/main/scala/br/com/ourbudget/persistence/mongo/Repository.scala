@@ -5,12 +5,13 @@ import com.mongodb.Mongo
 import org.springframework.data.mongodb.core.query.Query
 import org.springframework.data.mongodb.core.query.Criteria._
 import scala.collection.JavaConversions._
+import com.mongodb.ServerAddress
 
 
 class Repository {
 
 
-  val mongoOps = new MongoTemplate(new Mongo("192.168.99.100",27018), "ourbudget")
+  val mongoOps = new MongoTemplate(new Mongo(servers), "ourbudget")
 
 
   def save[B](b: B) = mongoOps save(b)
@@ -18,6 +19,22 @@ class Repository {
   def find[B](id:String, c: Class[B] ): B = mongoOps findOne(new Query(where("id").is(id)), c)
 
   def list[B](c: Class[B]): List[B] = mongoOps.findAll(c).toList
+
+
+
+
+
+
+
+
+
+
+
+  def servers = List(
+      new ServerAddress("192.168.99.100",27017),
+      new ServerAddress("192.168.99.100",27018),
+      new ServerAddress("192.168.99.100",27019)
+    )
 
 
 }
