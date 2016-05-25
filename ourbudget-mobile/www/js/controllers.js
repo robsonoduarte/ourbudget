@@ -43,6 +43,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('OurBudgetsCtrl', function($scope,$http) {
+
   	$http.get('http://192.168.0.3:8080/ourbudget/all')
 	 .success(function(result) {
 		 $scope.budgets = result;
