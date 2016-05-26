@@ -17,14 +17,13 @@ class RepositorySpec extends FlatSpec with Matchers {
 
 
   "it" should "save the object" in {
-    repository save(new Budget("test"))
+    repository save(new Budget("repository-test", "repository-test"))
   }
 
 
 
   "it" should "find object by id" in {
-		val budget = repository find("574075d4f1621dc1eafa9b63", classOf[Budget]) // FIXME: resolver the problem with integration db.
-
+		val budget = repository find("repository-test", classOf[Budget]) // FIXME: resolver the problem with integration db.
 		budget shouldBe a [Budget]
   }
 
