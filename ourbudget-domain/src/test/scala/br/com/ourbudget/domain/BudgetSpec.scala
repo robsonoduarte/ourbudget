@@ -11,15 +11,13 @@ class BudgetSpec extends FlatSpec with Matchers {
 
 
 
-	  val budget = new Budget("Travel", Array(Revenue("Investment", 100.0)), Array(Expenditure("Air Plane", 100.0)))
+	  val budget = new Budget("1", "Travel", Array(Revenue("Investment", 100.0)), Array(Expenditure("Air Plane", 100.0)))
 
 
 
 
     "it" should "return one new copy of Budget when addd new Revenue" in {
-
       val copy = budget + Revenue("Salary", 100.0)
-
       copy should not be theSameInstanceAs(budget)
     }
 
@@ -67,10 +65,6 @@ class BudgetSpec extends FlatSpec with Matchers {
 	   revenues should have length 1
 	   expenditures should have length 2
    }
-
-
-
-
 
 
 
