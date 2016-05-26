@@ -11,22 +11,28 @@ import br.com.ourbudget.domain.Budget
 class RepositorySpec extends FlatSpec with Matchers {
 
 
+	val budget = new Budget(null,"repository-test")
 	val repository = new Repository
 
 
 
-
-  "it" should "save the object" in {
-    repository save(new Budget("repository-test", "repository-test"))
+  "it" should "save the object and add id" in {
+    repository save(budget)
+    budget.id should not be(null)
   }
 
+
+	"it" should "update the object when it have id" in {
+	  val id = budget.id
+    repository save(budget)
+    budget.id should be(id) // don't change the id
+  }
 
 
   "it" should "find object by id" in {
-		val budget = repository find("repository-test", classOf[Budget]) // FIXME: resolver the problem with integration db.
-		budget shouldBe a [Budget]
+		val b = repository find(budget.id, classOf[Budget])
+		b.id should be (budget.id)
   }
-
 
 
 
