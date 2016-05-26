@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('ourbudget.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -21,7 +21,8 @@ angular.module('starter.controllers', [])
 
   // Triggered in the login modal to close it
   $scope.closeNew = function() {
-    $scope.modal.hide();
+	  $scope.modal.hide();
+//	  $state.go('app.budgets', {}, {reload: true})
   };
 
   // Open the login modal
@@ -43,11 +44,9 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('OurBudgetsCtrl', function($scope,$http) {
+.controller('BudgetsCtrl', function($scope,$http) {
+
 	$scope.budgets = []
-
-	console.log("log")
-
 
   	$http.get('http://192.168.0.3:8080/ourbudget/all')
 	 .success(function(result) {
@@ -57,6 +56,7 @@ angular.module('starter.controllers', [])
 	 	console.log(data)
 	 })
 })
+
 
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
