@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -10,39 +10,44 @@ angular.module('starter.controllers', [])
   //});
 
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.budget = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('templates/new.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
+  $scope.closeNew = function() {
     $scope.modal.hide();
   };
 
   // Open the login modal
-  $scope.login = function() {
+  $scope.openNew = function() {
     $scope.modal.show();
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+  $scope.doNew = function() {
+    $http.post('http://localhost:8080/ourbudget/new', $scope.budget)
+	.success(function(result) {
+		$scope.budget = {};
+		$scope.closeNew();
+	})
+	.error(function(data, status) {
+		console.log(status);
+	})
   };
 })
 
 
 .controller('OurBudgetsCtrl', function($scope,$http) {
+	$scope.budgets = []
+
+	console.log("log")
+
 
   	$http.get('http://192.168.0.3:8080/ourbudget/all')
 	 .success(function(result) {
@@ -51,9 +56,9 @@ angular.module('starter.controllers', [])
 	 .error(function(data, status) {
 	 	console.log(data)
 	 })
-
 })
 
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+	console.log($stateParams.id)
 });
