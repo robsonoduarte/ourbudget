@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doNew = function() {
-    $http.post('http://localhost:8080/ourbudget/new', $scope.budget)
+    $http.post('http://192.168.0.3:8080/ourbudget/new', $scope.budget)
 	.success(function(result) {
 		$scope.budget = {};
 		$scope.closeNew();
