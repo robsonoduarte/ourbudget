@@ -31,7 +31,7 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 
 
   post("/new") {
-    var budget = parsedBody.extract[Budget]
+    val budget = parsedBody.extract[Budget].copy(null) // clean id because it is generate by DB ( Mongo )
     save(budget)
     budget
   }
