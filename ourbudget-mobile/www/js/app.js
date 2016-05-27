@@ -31,30 +31,8 @@ angular.module('ourbudget', ['ionic', 'ourbudget.controllers'])
     	controller: 'AppCtrl'
   })
 
-
-  /*.state('app.search', {
-  url: '/search',
-  views: {
-    'menuContent': {
-      templateUrl: 'templates/search.html'
-    }
-  }
-})*/
-
-/*.state('app.browse', {
-    url: '/browse',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/browse.html'
-      }
-    }
-  }
-
-)*/
-
   .state('app.budgets', {
       url: '/budgets',
-      cache:false,
       views: {
         'menuContent': {
           templateUrl: 'templates/budgets.html',
@@ -63,18 +41,15 @@ angular.module('ourbudget', ['ionic', 'ourbudget.controllers'])
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    cache:false,
+  .state('app.budget', {
+    url: '/budget/:id',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/budget.html',
+        controller: 'BudgetCtrl'
       }
     }
   });
-
-
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/budgets');
