@@ -1,0 +1,19 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Novo Orçamento</h1>
+    <div class="buttons">
+      <button class="button button-icon ion-ios-close" ng-click="modal.hide()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Nome</span>
+          <input type="text" ng-model="budget.name">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" ng-click="newBudget(budget)">Salvar</button>
+        </label>
+      </div>
+  </ion-content>
+</ion-modal-view>
