@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.ourbudgetmobile355108" version="0.0.1"
+<widget id="br.com.ourbudegt" version="0.0.1"
 	xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>ourbudget</name>
 	<description>
 		Ourbudget
 	</description>
-	<author email="you@example.com" href="http://ourbudget.com/">
-		Your Name Here
+	<author email="robson.duarte@ourbudget.com.br" href="http://ourbudget.com.br">
+		Robson Duarte
 	</author>
 	<content src="index.html" />
 	<allow-navigation href="http://*/*" />
