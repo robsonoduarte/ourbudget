@@ -39,7 +39,50 @@ angular.module('ourbudget.controllers', [])
 
 
 
-.controller('BudgetCtrl', function($scope, $stateParams) {
-	$scope.id = $stateParams.id
+
+.controller('BudgetCtrl', function($scope, $ionicModal, $stateParams, $http) {
+
+
+	$ionicModal.fromTemplateUrl('new-revenue.html', {
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.modalRevenue = modal;
+	});
+
+
+	$ionicModal.fromTemplateUrl('new-expenditure.html', {
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.modalExpenditure = modal;
+	});
+
+
+
+	$http.get('http://192.168.0.3:8080/ourbudget/budget/'+$stateParams.id)
+		.success(function(result){
+		 $scope.budget = result
+	})
+
+
+
+	$scope.newRevenue = function(revenue) {
+		 $http.put('http://192.168.0.3:8080/ourbudget/revenue/'+$stateParams.id, revenue)
+			.success(function(result) {
+			   $scope.budget = result
+			   $scope.modalRevenue.hide()
+		})
+	}
+
+
+	$scope.newExpenditure = function(expenditure) {
+		 $http.put('http://192.168.0.3:8080/ourbudget/expenditure/'+$stateParams.id, expenditure)
+			.success(function(result) {
+			   $scope.budget = result
+			   $scope.modalExpenditure.hide()
+		})
+	}
+
 });
 

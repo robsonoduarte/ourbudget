@@ -1,5 +1,51 @@
-<ion-view view-title="{{id}}">
+<ion-view view-title="{{budget.name}}" >
   <ion-content>
-    {{id}}
+  	<div class="item item-divider item-button-right">
+    	Receitas
+        <button class="button button-icon ion-ios-plus" ng-click="modalRevenue.show()"></button>
+    </button>
+  	</div>
+    <ion-list>
+	  <ion-item ng-repeat="revenue in budget.revenues" class="positive">
+    	 {{revenue.name}}
+    	 <span class="item-note">
+      		{{revenue.value}}
+    	</span>    		
+  	  </ion-item>
+	</ion-list>
+	<div class="item item-divider item-button-right">
+    	Despesas
+        <button class="button button-icon ion-ios-plus" ng-click="modalExpenditure.show()"></button>
+    </button>
+  	</div>
+	<ion-list>
+	  <ion-item ng-repeat="expenditure in budget.expenditures">
+    	 {{expenditure.name}}
+    	<span class="item-note">
+      		{{expenditure.value}}
+    	</span>
+  	  </ion-item>
+	</ion-list>
   </ion-content>
+  
+  
+   <script id="new-revenue.html" type="text/ng-template">
+  	<div ng-include src="'templates/modal/new-revenue.html'"></div>
+  </script>
+  
+  
+   <script id="new-expenditure.html" type="text/ng-template">
+  	<div ng-include src="'templates/modal/new-expenditure.html'"></div>
+  </script>
+  
+  
 </ion-view>
+
+
+
+
+
+
+
+
+
