@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Nova Receita</h1>
+    <div class="buttons">
+      <button class="button button-icon ion-ios-close" ng-click="modalRevenue.hide()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Nome</span>
+          <input type="text" ng-model="revenue.name">
+        </label>
+        
+        <label class="item item-input">
+          <span class="input-label">Valor</span>
+          <input type="number" ng-model="revenue.value">
+        </label>
+        
+        <label class="item">
+          <button class="button button-block button-positive" ng-click="newRevenue(revenue)">Salvar</button>
+        </label>
+      </div>
+  </ion-content>
+</ion-modal-view>
