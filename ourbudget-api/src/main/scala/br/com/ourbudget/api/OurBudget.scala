@@ -49,6 +49,11 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
   }
 
 
+  get("/budget/:id"){
+	  findBudget
+  }
+
+
   get("/all"){
     repo list(classOf[Budget])
   }

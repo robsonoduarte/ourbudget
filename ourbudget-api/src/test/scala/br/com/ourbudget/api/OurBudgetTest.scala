@@ -70,7 +70,6 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
         val budget = parse(body).extract[Budget]
 
         budget.revenues should contain (Revenue("Salary", 400))
-
      }
 
   }
@@ -102,6 +101,16 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
+  test("should get Budgets by id"){ // the simple get method to test the first integration with App mobile
+	  get(s"/budget/$id"){
+		  val budget =  parse(body).extract[Budget]
+
+		  budget.id should be equals(id)
+	  }
+  }
+
+
+
 
 
   test("should get all Budgets in base"){ // the simple get method to test the first integration with App mobile
@@ -110,6 +119,9 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
        /*budgets should have size 2*/  // FIXME: we need make one solution to data base integration tests........
      }
   }
+
+
+
 
 
 
