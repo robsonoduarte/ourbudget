@@ -1,6 +1,6 @@
 package br.com.ourbudget.domain
 
-
+case class User(val name: String, val budget: Array[Budget])
 case class Revenue(val name: String, val value: Double)
 case class Expenditure(val name: String, val value: Double)
 case class Budget(val id : String = "", val name: String = "",  val revenues: Array[Revenue] = Array(), val expenditures: Array[Expenditure] = Array()){
