@@ -12,7 +12,7 @@ class UserSpec extends FlatSpec with Matchers {
 
 
 
-    val user = User("Robson")
+     val user = User("Robson")
 
 
 
@@ -20,7 +20,11 @@ class UserSpec extends FlatSpec with Matchers {
     "it" should "return one new copy of User when addd new Budget" in{
        val copy =  user + Budget()
        copy should not be theSameInstanceAs(user)
+
+       copy.budgets should have length 1
      }
+
+
 
 
 
