@@ -1,8 +1,8 @@
 package br.com.ourbudget.domain
 
-case class User(name: String, budgets: Array[Budget] = Array()){
+case class User(id: String = "", name: String = "", budgets: Array[String] = Array()){
 
-  def +(budget: Budget) = copy(name, budgets.+:(budget))
+  def +(budget: Budget) = copy(id, name, budgets.+:(budget.id))
 
 
 }
