@@ -5,4 +5,6 @@ case class User(id: String = "", name: String = "", budgets: Array[String] = Arr
   def +(budget: Budget) = copy(id, name, budgets.+:(budget.id))
 
 
+
+
 }
