@@ -29,7 +29,7 @@ angular.module('ourbudget.controllers', [])
 
 	 $scope.newBudget = function(budget) {
 		 $http.post('http://192.168.0.3:8080/ourbudget/new', budget)
-			.success(function(result) {
+			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
 				$scope.budget = {}
