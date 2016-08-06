@@ -29,14 +29,9 @@ class Repository {
 
 
 
-
   def servers = List(
-      new ServerAddress("192.168.99.100",27017),
-      new ServerAddress("192.168.99.100",27018),
-      new ServerAddress("192.168.99.100",27019)
+      new ServerAddress("192.168.99.100",27017)
     )
-
-
 }
 
 
