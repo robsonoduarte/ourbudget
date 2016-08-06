@@ -27,7 +27,6 @@ class BudgetSpec extends FlatSpec with Matchers {
 
    "it" should "return one new copy of Budget with new Revenues in List of Revenues " in {
 
-
     	val copy = budget + Revenue("Salary", 100.0)
 
       val revenues =  copy revenues
@@ -66,8 +65,23 @@ class BudgetSpec extends FlatSpec with Matchers {
 	   revenues should have length 1
 	   expenditures should have length 2
    }
+   
+   
+   
+   "it" should "return on new copy of Budget with the id of User " in {
+	   
+     val user = new User(id = "id", name= "Robson")
+          
+	   val copy = budget +  user
+
+	   copy.users should contain("id")
+   }
 
 
 
+   
+   
+   
+   
 
 }

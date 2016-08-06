@@ -20,7 +20,9 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
   }
 
 
-
+  get("/all"){
+    repo list(classOf[Budget])
+  }
 
 
 
@@ -54,9 +56,7 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
   }
 
 
-  get("/all"){
-    repo list(classOf[Budget])
-  }
+
 
 
 
