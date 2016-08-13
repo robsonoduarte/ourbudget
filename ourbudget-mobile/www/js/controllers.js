@@ -22,7 +22,7 @@ angular.module('ourbudget.controllers', [])
 		$scope.modal = modal;
 	});
 
-  	$http.get('http://192.168.0.3:8080/ourbudget/all')
+  	$http.get('http://192.168.0.3:8080/ourbudget/budgets/user/57a51db034e53360137542aa')
   		.success(function(result){
   			$scope.budgets = result;
 	 })
