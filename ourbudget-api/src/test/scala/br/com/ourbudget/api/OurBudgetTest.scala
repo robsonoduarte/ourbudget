@@ -48,8 +48,8 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val revenue = "{ \"name\": \"Salary\", \"value\": 400 }"
 
+  val revenue = """{ "name": "Salary", "value": 400 }"""
 
   test("should add the Revenue in the Budget searching by id"){
      put(s"/revenue/$id", revenue ){
@@ -62,9 +62,7 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-
-
-  val expenditure = "{ \"name\": \"Hotel\", \"value\": 200 }"
+  val expenditure = """{ "name": "Hotel", "value": 200 }""""
 
   test("should add the Expenditure in the Budget searching by id"){
      put(s"/expenditure/$id", expenditure ){
