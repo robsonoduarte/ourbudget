@@ -42,6 +42,10 @@ class RepositorySpec extends FlatSpec with Matchers {
   }
 
 
+  "it" should "list all Budgets to the user" in {
+	  val budgets = repository listToUser("57a51db034e53360137542aa")
+		/*budgets should  have size(2) */// FIXME: resolver the problem with integration db.
+  }
 
 
 

@@ -10,15 +10,21 @@ object Test extends App {
 
   //repo save User( id = null, name = "Robson")
 
-  val user =  repo find("57a51db034e53360137542aa", classOf[User])
+ /* val user =  repo find("57a51db034e53360137542aa", classOf[User])
 
-  val budget = repo find("57a53feb9893450e3ee499c7", classOf[Budget])
+  val budget = repo find("57ae876cb8bff5893390fdc0", classOf[Budget])
 
 
   repo save user + budget
   repo save budget + user
+*/
 
- // print(user)
+  val budgets = repo listToUser "57a51db034e53360137542aa"
+
+  print(budgets)
+
+
+  /*print(user)*/
 
 
 
