@@ -36,16 +36,12 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
   }
 
 
-
-
    test("should create new Budget"){
      post("/", budget ){
        val budget = parse(body).extract[Budget]
        budget.name should be("Travel")
      }
   }
-
-
 
 
 
@@ -60,8 +56,6 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-
-
   val expenditure = """{ "name": "Hotel", "value": 200 }""""
 
   test("should add the Expenditure in the Budget searching by id"){
@@ -70,9 +64,6 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
         budget.expenditures should contain (Expenditure("Hotel", 200))
      }
   }
-
-
-
 
 
   test("should get Budgets by id"){
@@ -90,6 +81,23 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
        /*budgets should have size 2*/  // FIXME: we need make one solution to data base integration tests........
      }
   }
+
+
+
+  test("should get all Budgets of the user"){
+     get("/budgets/user/57a51db034e53360137542aa"){
+       val budgets =  parse(body).extract[List[Budget]]
+       /*budgets should have size 2*/  // FIXME: we need make one solution to data base integration tests........
+     }
+  }
+
+
+
+
+
+
+
+
 
 
 }

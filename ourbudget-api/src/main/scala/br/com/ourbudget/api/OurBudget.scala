@@ -39,10 +39,13 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 	  findBudget
   }
 
+  get("/budgets/user/:id"){
+	  repo listToUser params("id")
+  }
+
   get("/all"){
 	  repo list(classOf[Budget])
   }
-
 
   put("/revenue/:id") {
     val budget = findBudget + parsedBody.extract[Revenue]
