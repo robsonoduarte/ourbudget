@@ -20,9 +20,6 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
   }
 
 
-  get("/all"){
-    repo list(classOf[Budget])
-  }
 
 
 
@@ -32,11 +29,20 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 
 
 
-  post("/new") {
+  post("/") {
     val budget = parsedBody.extract[Budget].copy(null) // clean id because it is generate by DB ( Mongo )
     save(budget)
     budget
   }
+
+  get("/:id"){
+	  findBudget
+  }
+
+  get("/all"){
+	  repo list(classOf[Budget])
+  }
+
 
   put("/revenue/:id") {
     val budget = findBudget + parsedBody.extract[Revenue]
@@ -48,11 +54,6 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
     val budget = findBudget + parsedBody.extract[Expenditure]
     save(budget)
     budget
-  }
-
-
-  get("/budget/:id"){
-	  findBudget
   }
 
 

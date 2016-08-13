@@ -24,39 +24,26 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val budget = "{\"name\": \"Travel\"}"
+  val budget = """{"name": "Travel"}""""
 
    test("should create new Budget and return json with the id"){
-
-     post("/new", budget ){
-
+     post("/", budget ){
        val json = parse(body)
-
        // the id is the private attr in budget
        id = (json \ "id").extract[String]
        id should not be empty
      }
-
-
   }
-
 
 
 
 
    test("should create new Budget"){
-
-     post("/new", budget ){
+     post("/", budget ){
        val budget = parse(body).extract[Budget]
        budget.name should be("Travel")
      }
-
-
   }
-
-
-
-
 
 
 
@@ -66,17 +53,10 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
   test("should add the Revenue in the Budget searching by id"){
      put(s"/revenue/$id", revenue ){
-
         val budget = parse(body).extract[Budget]
-
         budget.revenues should contain (Revenue("Salary", 400))
      }
-
   }
-
-
-
-
 
 
 
@@ -86,12 +66,9 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
   val expenditure = "{ \"name\": \"Hotel\", \"value\": 200 }"
 
-
   test("should add the Expenditure in the Budget searching by id"){
      put(s"/expenditure/$id", expenditure ){
-
         val budget = parse(body).extract[Budget]
-
         budget.expenditures should contain (Expenditure("Hotel", 200))
      }
   }
@@ -100,45 +77,21 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-
-  test("should get Budgets by id"){ // the simple get method to test the first integration with App mobile
-	  get(s"/budget/$id"){
+  test("should get Budgets by id"){
+	  get(s"/$id"){
 		  val budget =  parse(body).extract[Budget]
-
 		  budget.id should be equals(id)
 	  }
   }
 
 
 
-
-
-  test("should get all Budgets in base"){ // the simple get method to test the first integration with App mobile
+  test("should get all Budgets in base"){ // FIXME: the simple get method to test the first integration with App mobile
      get("/all"){
        val budgets =  parse(body).extract[List[Budget]]
        /*budgets should have size 2*/  // FIXME: we need make one solution to data base integration tests........
      }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
