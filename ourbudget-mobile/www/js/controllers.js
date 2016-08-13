@@ -28,7 +28,7 @@ angular.module('ourbudget.controllers', [])
 	 })
 
 	 $scope.newBudget = function(budget) {
-		 $http.post('http://192.168.0.3:8080/ourbudget/new', budget)
+		 $http.post('http://192.168.0.3:8080/ourbudget/', budget)
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
@@ -60,7 +60,7 @@ angular.module('ourbudget.controllers', [])
 
 
 
-	$http.get('http://192.168.0.3:8080/ourbudget/budget/'+$stateParams.id)
+	$http.get('http://192.168.0.3:8080/ourbudget/'+$stateParams.id)
 		.success(function(result){
 		 $scope.budget = result
 	})
