@@ -13,7 +13,10 @@ angular.module('ourbudget.controllers', [])
 
 .controller('BudgetsCtrl', function($scope, $ionicModal, $http){
 
-	$scope.budget = {}
+	$scope.budget = {
+			name: '',
+			users: ['57a51db034e53360137542aa']
+		}
 
 	$ionicModal.fromTemplateUrl('new-budget.html', {
 		scope: $scope,
@@ -32,7 +35,10 @@ angular.module('ourbudget.controllers', [])
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
-				$scope.budget = {}
+					$scope.budget = {
+						name: '',
+						users: ['57a51db034e53360137542aa']
+					}
 		})
 	 }
 })
