@@ -24,12 +24,11 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val budget = """{"name": "Travel"}""""
+  val budget = """{"name": "Travel", "users":  ["123"]}""""
 
    test("should create new Budget and return json with the id"){
      post("/", budget ){
        val json = parse(body)
-       // the id is the private attr in budget
        id = (json \ "id").extract[String]
        id should not be empty
      }
@@ -40,6 +39,7 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
      post("/", budget ){
        val budget = parse(body).extract[Budget]
        budget.name should be("Travel")
+       budget.users contains("123")
      }
   }
 
