@@ -5,15 +5,15 @@ import org.scalatra._
 
 import org.json4s.{ DefaultFormats, Formats }
 import org.scalatra.json._
-import br.com.ourbudget.persistence.mongo.Repository
 import br.com.ourbudget.domain.Revenue
 import br.com.ourbudget.domain.Expenditure
+import br.com.ourbudget.repo.Repo
 
 class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 
   protected implicit lazy val jsonFormats: Formats = DefaultFormats
 
-  var repo = new Repository
+  var repo = new Repo
 
   before() {
     contentType = formats("json")
