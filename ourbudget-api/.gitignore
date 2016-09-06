@@ -5,3 +5,5 @@
 /.tern-project
 /.cache-main
 /.cache-tests
+/project/target/
+/project/project/
