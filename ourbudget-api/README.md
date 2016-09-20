@@ -1,4 +1,3 @@
 The API
 -------------------
-
-**README in CONSTRUTION**
+**README IN CONSTRUCTION**
