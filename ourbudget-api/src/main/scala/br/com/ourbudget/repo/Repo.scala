@@ -26,3 +26,9 @@ class Repo {
 }
 
 
+
+object Repo{
+  def apply() = new Repo()
+}
+
+
