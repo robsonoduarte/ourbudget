@@ -18,6 +18,17 @@ angular.module('ourbudget', ['ionic', 'ourbudget.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+      var notificationOpenedCallback = function(jsonData) {
+    	  alert("ourbudget");
+      };
+
+      window.plugins.OneSignal.init("f649b5d2-cd2d-44ad-bff6-435f82cd2003",
+                                     {googleProjectNumber: "874787030620"},
+                                     notificationOpenedCallback);
+      // Show an alert box if a notification comes in when the user is in your app.
+      window.plugins.OneSignal.enableInAppAlertNotification(true);
+
   });
 })
 
