@@ -8,6 +8,7 @@ import org.scalatra.json._
 import br.com.ourbudget.domain.Revenue
 import br.com.ourbudget.domain.Expenditure
 import br.com.ourbudget.repo.Repo
+import scalaj.http.Http
 
 class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 
@@ -28,6 +29,9 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
   post("/") {
     val budget = parsedBody.extract[Budget].copy(null) // clean id because it is generate by DB ( Mongo )
     save(budget)
+
+    notification
+
     budget
   }
 
@@ -62,7 +66,21 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 
 
 
+  def notification = {
 
+  val app_id = ""
+  val api_key = ""
+
+  val json = s"""{"app_id": "$app_id","included_segments": ["All"], "data": {"foo": "bar"}, "contents": {"en": "English Message"}}"""
+
+    val rsp =  Http("https://onesignal.com/api/v1/notifications")
+    .postData(json)
+    .header("content-type", "application/json; charset=UTF-8")
+    .header("Authorization", s"Basic $api_key")
+    .asString
+
+    println(rsp)
+  }
 
 
 
