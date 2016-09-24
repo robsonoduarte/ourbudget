@@ -9,12 +9,15 @@ import br.com.ourbudget.domain.Revenue
 import br.com.ourbudget.domain.Expenditure
 import br.com.ourbudget.repo.Repo
 import scalaj.http.Http
+import br.com.ourbudget.notification.Notificator
 
 class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 
   protected implicit lazy val jsonFormats: Formats = DefaultFormats
 
-  var repo = new Repo
+   private val repo = Repo()
+   private val notificator = Notificator()
+
 
   before() {
     contentType = formats("json")
@@ -29,9 +32,7 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
   post("/") {
     val budget = parsedBody.extract[Budget].copy(null) // clean id because it is generate by DB ( Mongo )
     save(budget)
-
-    notification
-
+    notificator notify(s"""{"name":"${budget.name}"}""")
     budget
   }
 
@@ -47,14 +48,18 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 	  repo list(classOf[Budget])
   }
 
-  put("/revenue/:id") {
-    val budget = findBudget + parsedBody.extract[Revenue]
+  put("/revenue/:id") ({
+    val revenue = parsedBody.extract[Revenue];
+    val budget = findBudget + revenue
     save(budget)
+    notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
     budget
-  }
+  })
 
   put("/expenditure/:id") {
-    val budget = findBudget + parsedBody.extract[Expenditure]
+    val expenditure = parsedBody.extract[Expenditure]
+    val budget = findBudget + expenditure
+    notificator notify(s"""{"name":"${budget.name}", "expenditure": "${expenditure.name}"}""")
     save(budget)
     budget
   }
@@ -66,21 +71,6 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 
 
 
-  def notification = {
-
-  val app_id = ""
-  val api_key = ""
-
-  val json = s"""{"app_id": "$app_id","included_segments": ["All"], "data": {"foo": "bar"}, "contents": {"en": "English Message"}}"""
-
-    val rsp =  Http("https://onesignal.com/api/v1/notifications")
-    .postData(json)
-    .header("content-type", "application/json; charset=UTF-8")
-    .header("Authorization", s"Basic $api_key")
-    .asString
-
-    println(rsp)
-  }
 
 
 
