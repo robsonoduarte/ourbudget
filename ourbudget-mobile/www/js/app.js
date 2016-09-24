@@ -19,15 +19,15 @@ angular.module('ourbudget', ['ionic', 'ourbudget.controllers'])
       StatusBar.styleDefault();
     }
 
-      var notificationOpenedCallback = function(jsonData) {
-    	  alert("ourbudget");
+      var notificationOpenedCallback = function(data) {
+    	  alert(JSON.stringify(data));
       };
 
-      window.plugins.OneSignal.init("f649b5d2-cd2d-44ad-bff6-435f82cd2003",
-                                     {googleProjectNumber: "874787030620"},
+      window.plugins.OneSignal.init("",
+                                     {googleProjectNumber: ""},
                                      notificationOpenedCallback);
       // Show an alert box if a notification comes in when the user is in your app.
-      window.plugins.OneSignal.enableInAppAlertNotification(true);
+      window.plugins.OneSignal.enableInAppAlertNotification(false);
 
   });
 })
