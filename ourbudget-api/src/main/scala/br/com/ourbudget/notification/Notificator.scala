@@ -12,7 +12,7 @@ class Notificator {
 
 
 
-
+// TODO: get object message
   def notify(msg: String) = {
 
     val rsp =  Http("https://onesignal.com/api/v1/notifications")
