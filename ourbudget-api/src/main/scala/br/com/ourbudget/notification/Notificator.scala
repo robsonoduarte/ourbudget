@@ -15,6 +15,8 @@ class Notificator {
 // TODO: get object message
   def notify(msg: String) = {
 
+
+	  // TODO: filter the notification by user of budget
     val rsp =  Http("https://onesignal.com/api/v1/notifications")
       .postData(json(msg))
       .header("content-type", "application/json; charset=UTF-8")
