@@ -1,3 +1,5 @@
+
+
 package br.com.ourbudget.repo
 
 import org.springframework.data.mongodb.core.MongoTemplate
@@ -24,6 +26,9 @@ class Repo {
   def servers = List(new ServerAddress("192.168.99.100",27017))
 
 }
+
+
+
 
 
 
