@@ -9,7 +9,7 @@ import com.mongodb.ServerAddress
 import br.com.ourbudget.domain.Budget
 
 
-//TODO: we move this to ourbudget service module
+
 class Repo {
 
 

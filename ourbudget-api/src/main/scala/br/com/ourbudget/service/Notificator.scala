@@ -1,4 +1,4 @@
-package br.com.ourbudget.notification
+package br.com.ourbudget.service
 
 import scalaj.http.Http
 
@@ -30,6 +30,7 @@ class Notificator {
 
 
 
+	// TODO: generate the json by json4s
 	 private def json(msg:String) = {
 	   val s =  s"""{"app_id": "$app_id","included_segments": ["All"], "data": $msg, "contents": {"en": "New Budget"}}"""
 	   print(s)

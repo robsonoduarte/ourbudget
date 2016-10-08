@@ -1,3 +1,4 @@
+
 package br.com.ourbudget.api
 
 import br.com.ourbudget.domain.Budget
@@ -9,7 +10,7 @@ import br.com.ourbudget.domain.Revenue
 import br.com.ourbudget.domain.Expenditure
 import br.com.ourbudget.repo.Repo
 import scalaj.http.Http
-import br.com.ourbudget.notification.Notificator
+import br.com.ourbudget.service.Notificator
 
 class OurBudget extends ScalatraServlet with JacksonJsonSupport {
 

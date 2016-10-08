@@ -1,4 +1,4 @@
-package br.com.ourbudget.notification
+package br.com.ourbudget.service
 
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
@@ -7,7 +7,6 @@ class NotificatorSpec extends FlatSpec with Matchers{
 
 
   val notificator = Notificator()
-
 
 
 
