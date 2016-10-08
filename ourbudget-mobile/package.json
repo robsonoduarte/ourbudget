@@ -1,7 +1,7 @@
 {
   "name": "ourbudget-mobile",
   "version": "1.1.1",
-  "description": "ourbudget-mobile: An Ionic project",
+  "description": "ourbudget-mobile: the app to manager our budgets",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -20,7 +20,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "onesignal-cordova-plugin"
   ],
   "cordovaPlatforms": [
     "android"
