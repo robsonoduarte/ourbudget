@@ -5,8 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('ourbudget', ['ionic', 'ourbudget.controllers'])
-
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$ionicPopup) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,13 +18,22 @@ angular.module('ourbudget', ['ionic', 'ourbudget.controllers'])
       StatusBar.styleDefault();
     }
 
-      var notificationOpenedCallback = function(data) {
-    	  alert(JSON.stringify(data));
-      };
+     var notificationOpenedCallback = function(data) {
+    	  var x = data
+    	  var y = data.additionalData
+    	  $ionicPopup.show({
+ 	         title: x.message,
+ 	         subTitle: y.name,
+ 	        buttons: [{ text: 'OK', type: 'button-positive' }]
+ 	     });
+     };
+
+
 
       window.plugins.OneSignal.init("",
                                      {googleProjectNumber: ""},
                                      notificationOpenedCallback);
+
       // Show an alert box if a notification comes in when the user is in your app.
       window.plugins.OneSignal.enableInAppAlertNotification(false);
 
