@@ -40,16 +40,6 @@ angular.module('ourbudget.controllers', [])
 						users: ['57a51db034e53360137542aa']
 					}
 		})
-
-		console.log('123')
-
-		 var push = new Ionic.Push({});
-
-		 push.register(function(token) {
-		   // Log out your device token (Save this!)
-		   console.log("Got Token:",token.token);
-		 });
-
 	 }
 })
 
