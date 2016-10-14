@@ -25,3 +25,6 @@ lazy val root = (project in file(".")).settings(
   )
 
 ).settings(jetty(): _*)
+
+
+enablePlugins(sbtdocker.DockerPlugin, JavaAppPackaging)
