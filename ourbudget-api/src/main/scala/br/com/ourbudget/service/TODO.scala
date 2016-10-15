@@ -7,7 +7,7 @@ class TODO {
   // TODO:Pattern of data JSON ( SNAPHSHOT )
   // TODO:continue the https://github.com/marcuslonnberg/sbt-docker
   // TODO:Jenkins Pipeline local
-  // TODO:Deploy API in AWS
+  // TODO:Deploy API in AWS ( Amazon EC2 Container Service  ) 
   // TODO:Docker compose with mongo db
   
 }
