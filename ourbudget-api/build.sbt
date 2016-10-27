@@ -28,3 +28,16 @@ lazy val root = (project in file(".")).settings(
 
 
 enablePlugins(sbtdocker.DockerPlugin, JavaAppPackaging)
+
+
+dockerfile in docker := {
+  val appDir: File = stage.value
+  val targetDir = "/app"
+
+  new Dockerfile {
+    from("java")
+    entryPoint(s"$targetDir/bin/${executableScriptName.value}")
+    copy(appDir, targetDir)
+  }
+
+}
