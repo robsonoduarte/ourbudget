@@ -35,7 +35,7 @@ dockerfile in docker := {
   val targetDir = "/app"
 
   new Dockerfile {
-    from("java")
+    from("robsonoduarte/8-jre-alpine-bash")
     entryPoint(s"$targetDir/bin/${executableScriptName.value}")
     copy(appDir, targetDir)
   }
