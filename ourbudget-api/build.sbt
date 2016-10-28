@@ -39,5 +39,9 @@ dockerfile in docker := {
     entryPoint(s"$targetDir/bin/${executableScriptName.value}")
     copy(appDir, targetDir)
   }
-
 }
+
+
+imageNames in docker := Seq(
+  ImageName("ourbudget-api")
+)
