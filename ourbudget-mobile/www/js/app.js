@@ -30,8 +30,8 @@ angular.module('ourbudget', ['ionic', 'ourbudget.controllers'])
 
 
 
-      window.plugins.OneSignal.init("",
-                                     {googleProjectNumber: ""},
+      window.plugins.OneSignal.init("8f88f81f-8e2f-4433-b85a-27e387bec18d",
+                                     {googleProjectNumber: "744584945872"},
                                      notificationOpenedCallback);
 
       // Show an alert box if a notification comes in when the user is in your app.
