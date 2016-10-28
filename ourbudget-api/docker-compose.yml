@@ -9,4 +9,3 @@ mongo:
   ports:
   - "2375:2375"
   image: docker:dind
-  privileged: true
