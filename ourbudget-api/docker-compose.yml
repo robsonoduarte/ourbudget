@@ -1,11 +1,10 @@
 ourbudget-api:
-  image: jenkins
+  image: ourbudget-api
   ports:
    - "8080:8080"
-   - "50000:50000"
   links:
-   - docker
+   - mongo
 mongo:
   ports:
-  - "2375:2375"
-  image: docker:dind
+  - "27017:27017"
+  image: mongo
