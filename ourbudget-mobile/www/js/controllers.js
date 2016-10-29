@@ -15,7 +15,7 @@ angular.module('ourbudget.controllers', [])
 
 	$scope.budget = {
 			name: '',
-			users: ['57a51db034e53360137542aa']
+			users: ['581492b034704ea01708f1ff']
 		}
 
 	$ionicModal.fromTemplateUrl('new-budget.html', {
@@ -25,7 +25,7 @@ angular.module('ourbudget.controllers', [])
 		$scope.modal = modal;
 	});
 
-  	$http.get('http://192.168.0.3:8080/ourbudget/budgets/user/57a51db034e53360137542aa')
+  	$http.get('http://192.168.0.3:8080/ourbudget/budgets/user/581492b034704ea01708f1ff')
   		.success(function(result){
   			$scope.budgets = result;
 	 })
@@ -37,7 +37,7 @@ angular.module('ourbudget.controllers', [])
 				$scope.modal.hide()
 					$scope.budget = {
 						name: '',
-						users: ['57a51db034e53360137542aa']
+						users: ['581492b034704ea01708f1ff']
 					}
 		})
 	 }
