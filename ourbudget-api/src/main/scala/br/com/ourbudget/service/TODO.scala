@@ -10,6 +10,7 @@ class TODO {
   // TODO:Update the data on receive the push notification ( APP opened )
   // TODO:Pattern of data JSON ( SNAPHSHOT )
   // TODO:Jenkins Pipeline local with SBT
+  // TODO:Deploy API in AWS Docker Compose ( API + Mongo )
   // TODO:Deploy API in AWS ( Amazon EC2 Container Service  )
 
 
