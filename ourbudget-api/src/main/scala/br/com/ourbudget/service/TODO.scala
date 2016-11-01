@@ -4,7 +4,7 @@ class TODO {
 
 
   // TODO: How to connect to a docker container from outside the host (same network)
-  // TODO: AWS Account OK
+
 
   // TODO:Format the push notification MSG in Popup App
   // TODO:Update the data on receive the push notification ( APP opened )
