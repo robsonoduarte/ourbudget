@@ -1,5 +1,5 @@
 ourbudget-api:
-  image: ourbudget-api
+  image: robsonoduarte/ourbudget-api
   ports:
    - "8080:8080"
   links:
