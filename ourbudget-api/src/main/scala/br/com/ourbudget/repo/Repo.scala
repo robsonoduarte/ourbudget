@@ -23,7 +23,7 @@ class Repo {
   def listToUser(id: String) = mongoOps.find(new Query(where("users").in(id)), classOf[Budget]).toList
 
 
-  def servers = List(new ServerAddress("192.168.99.100",27017))
+  def servers = List(new ServerAddress("172.17.0.3",27017))
 
 }
 
