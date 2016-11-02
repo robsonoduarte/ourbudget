@@ -14,5 +14,6 @@ class TODO {
   // TODO:Push the image in docke hub
   // TODO:Deploy API in AWS ( Amazon EC2 Container Service  )
 
+  // TODO: IP Resolver
 
 }
