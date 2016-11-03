@@ -14,6 +14,8 @@ class TODO {
   // TODO:Deploy API in AWS ( Amazon EC2 Container Service  )
 
   // TODO: IP Resolver
-  // TODO: Push image docker hub
+
+
+  // TODO: authentication the API
 
 }
