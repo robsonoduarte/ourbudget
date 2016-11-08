@@ -1,3 +1,3 @@
-OurBudget Mobile App
+Our Budget Mobile App
 -----------------
 **README in CONSTRUCTION**
