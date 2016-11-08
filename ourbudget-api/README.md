@@ -1,3 +1,3 @@
-OurBudget API
+Our Budget API
 -------------------
 **README IN CONSTRUCTION**
