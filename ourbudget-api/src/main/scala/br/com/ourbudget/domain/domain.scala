@@ -19,3 +19,4 @@ case class User(id: String = "", name: String = "", budgets: Array[String] = Arr
 
 
 // TODO: add date in Budget + Revenue + Expenditure
+// TODO: add close to Budget
