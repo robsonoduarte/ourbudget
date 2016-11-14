@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+.item-content-positive {
+  background-color:#bcdcfc !important;
+}
+
+.item-content-warning {
+  background-color:#fafdce !important;
+}

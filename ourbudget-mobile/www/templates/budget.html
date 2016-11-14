@@ -6,11 +6,11 @@
     </button>
   	</div>
     <ion-list>
-	  <ion-item ng-repeat="revenue in budget.revenues" class="positive">
+	  <ion-item ng-repeat="revenue in budget.revenues" ng-class="revenue.received == true ? 'item-content-positive' : 'item-content-warning'">
     	 {{revenue.name}}
     	 <span class="item-note">
       		{{revenue.value}}
-    	</span>    		
+    	</span>
   	  </ion-item>
 	</ion-list>
 	<div class="item item-divider item-button-right">
@@ -33,21 +33,21 @@
     	</span>
     	<span class="item-note positive"  ng-if="budget.balance > 0.0" style="font-weight: bold;">
     		{{budget.balance}}
-    	</span> 
+    	</span>
   	</div>
   </ion-content>
-  
-  
+
+
    <script id="new-revenue.html" type="text/ng-template">
   	<div ng-include src="'templates/modal/new-revenue.html'"></div>
   </script>
-  
-  
+
+
    <script id="new-expenditure.html" type="text/ng-template">
   	<div ng-include src="'templates/modal/new-expenditure.html'"></div>
   </script>
-  
-  
+
+
 </ion-view>
 
 
