@@ -1,8 +1,8 @@
 package br.com.ourbudget.domain
 
 
-case class Revenue(name: String, value: Double)
-case class Expenditure(name: String, value: Double)
+case class Revenue(name: String, value: Double, received: Boolean = false)
+case class Expenditure(name: String, value: Double, liquidated: Boolean = false)
 
 
 // TODO: Study some way to allow create the Budget only with name...
@@ -22,4 +22,4 @@ case class User(id: String = "", name: String = "", budgets: Array[String] = Arr
 // TODO: add close to Budget
 // TODO: Revenue Received
 // TODO: Expenditure liquidated
-// TODO: Expenditure with sub Group os Expenditure
+// TODO: Expenditure with sub Group of Expenditure
