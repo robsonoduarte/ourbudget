@@ -8,9 +8,7 @@
     <ion-list>
 	  <ion-item ng-repeat="revenue in budget.revenues" ng-class="revenue.received == true ? 'item-content-positive' : 'item-content-warning'">
     	 {{revenue.name}}
-    	 <span class="item-note">
-      		{{revenue.value}}
-    	</span>
+    	 <span class="item-note">{{revenue.value}}</span>
   	  </ion-item>
 	</ion-list>
 	<div class="item item-divider item-button-right">
@@ -21,9 +19,7 @@
 	<ion-list>
 	  <ion-item ng-repeat="expenditure in budget.expenditures">
     	 {{expenditure.name}}
-    	<span class="item-note" >
-      		{{expenditure.value}}
-    	</span>
+    	<span class="item-note" >{{expenditure.value}}</span>
   	  </ion-item>
 	</ion-list>
 	<div class="item item-divider ">
@@ -49,12 +45,3 @@
 
 
 </ion-view>
-
-
-
-
-
-
-
-
-
