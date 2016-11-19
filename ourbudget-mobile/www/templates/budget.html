@@ -7,8 +7,7 @@
   	</div>
     <ion-list>
 	  <ion-item ng-repeat="revenue in budget.revenues" >
-	   <i class="icon ion-checkmark-round balanced" ng-if="revenue.received"></i>
-	   <i class="icon ion-alert energized" ng-if="!revenue.received"></i>
+	   <i class=" icon  ng-class: revenue.received ? 'balanced ion-checkmark-round' : 'energized ion-alert';"></i>
     	 {{revenue.name}}
     	 <span class="item-note positive">
     	 	+ {{revenue.value}}
@@ -22,6 +21,8 @@
   	</div>
 	<ion-list>
 	  <ion-item ng-repeat="expenditure in budget.expenditures">
+	    <i class="icon ion-checkmark-round balanced" ng-if="expenditure.liquidated"></i>
+	    <i class="icon ion-alert energized" ng-if="!expenditure.liquidated"></i>
     	 {{expenditure.name}}
     	<span class="item-note" >{{expenditure.value}}</span>
   	  </ion-item>
