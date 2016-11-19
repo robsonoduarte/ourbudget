@@ -10,9 +10,8 @@
 	   <i class="icon ion-checkmark-round balanced" ng-if="revenue.received"></i>
 	   <i class="icon ion-alert energized" ng-if="!revenue.received"></i>
     	 {{revenue.name}}
-    	 <span class="item-note">
-    	 	<ion-icon name="add"></ion-icon>
-    	 	{{revenue.value}}
+    	 <span class="item-note positive">
+    	 	+ {{revenue.value}}
     	 </span>
   	  </ion-item>
 	</ion-list>
