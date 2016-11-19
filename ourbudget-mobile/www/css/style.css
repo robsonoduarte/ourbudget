@@ -1,7 +1,5 @@
-.item-content-positive {
-  background-color:#6fb8f4 !important;
-}
-
-.item-content-warning {
-  background-color:#ffff6a !important;
+.divider-title{
+	height: 54px;
+	padding-top: 16px;
+	font-size: 18px;
 }
