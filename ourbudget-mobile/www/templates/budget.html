@@ -30,10 +30,7 @@
 	</ion-list>
 	<div class="item item-divider ">
     	Saldo
-    	 <span class="item-note assertive"  ng-if="budget.balance < 0.0" style="font-weight: bold;">
-    		{{budget.balance}}
-    	</span>
-    	<span class="item-note positive"  ng-if="budget.balance > 0.0" style="font-weight: bold;">
+    	 <span class="item-note assertive ng-class: budget.balance > 0.0 ? 'positive' : 'assertive' "  style="font-weight: bold;">
     		{{budget.balance}}
     	</span>
   	</div>
