@@ -1,8 +1,8 @@
 <ion-view view-title="{{budget.name}}" >
   <ion-content>
-  	<div class="item item-divider item-button-right">
+  	<div class="item item-divider divider-title item-button-right ">
     	Receitas
-        <button class="button button-icon ion-ios-plus" ng-click="modalRevenue.show()"></button>
+        <button class="button button-icon icon ion-ios-plus" ng-click="modalRevenue.show()"></button>
     </button>
   	</div>
     <ion-list>
@@ -10,13 +10,13 @@
 	   <i class=" icon  ng-class: revenue.received ? 'balanced ion-checkmark-round' : 'energized ion-alert';"></i>
     	 {{revenue.name}}
     	 <span class="item-note positive">
-    	 	+ {{revenue.value}}
+    	 	+ R$ {{revenue.value}}
     	 </span>
   	  </ion-item>
 	</ion-list>
-	<div class="item item-divider item-button-right">
+	<div class="item item-divider divider-title item-button-right" >
     	Despesas
-        <button class="button button-icon ion-ios-plus" ng-click="modalExpenditure.show()"></button>
+        <button class="button button-icon icon ion-ios-plus" ng-click="modalExpenditure.show()"></button>
     </button>
   	</div>
 	<ion-list>
@@ -24,14 +24,14 @@
 	  <i class=" icon  ng-class: expenditure.liquidated ? 'balanced ion-checkmark-round' : 'energized ion-alert';"></i>
     	 {{expenditure.name}}
     	<span class="item-note assertive" >
-    		- {{expenditure.value}}
+    		- R$ {{expenditure.value}}
     	</span>
   	  </ion-item>
 	</ion-list>
 	<div class="item item-divider ">
     	Saldo
     	 <span class="item-note assertive ng-class: budget.balance > 0.0 ? 'positive' : 'assertive' "  style="font-weight: bold;">
-    		{{budget.balance}}
+    		{{budget.balance | number:2}}
     	</span>
   	</div>
   </ion-content>
