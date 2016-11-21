@@ -11,7 +11,7 @@ angular.module('ourbudget.controllers', [])
 })
 
 
-.controller('BudgetsCtrl', function($scope, $ionicModal, $http){
+.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
 
 	$scope.budget = {
 			name: '',
@@ -25,9 +25,12 @@ angular.module('ourbudget.controllers', [])
 		$scope.modal = modal;
 	});
 
+	$ionicLoading.show()
+
   	$http.get('http://192.168.0.3:8080/ourbudget/budgets/user/581492b034704ea01708f1ff')
   		.success(function(result){
   			$scope.budgets = result;
+  			$ionicLoading.hide()
 	 })
 
 	 $scope.newBudget = function(budget) {
@@ -46,7 +49,7 @@ angular.module('ourbudget.controllers', [])
 
 
 
-.controller('BudgetCtrl', function($scope, $ionicModal, $stateParams, $http) {
+.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
 
 
 	$ionicModal.fromTemplateUrl('new-revenue.html', {
