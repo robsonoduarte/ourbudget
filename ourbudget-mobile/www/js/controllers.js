@@ -15,7 +15,7 @@ angular.module('ourbudget.controllers', [])
 
 	$scope.budget = {
 			name: '',
-			users: ['581492b034704ea01708f1ff']
+			users: ['']
 		}
 
 	$ionicModal.fromTemplateUrl('new-budget.html', {
@@ -27,20 +27,20 @@ angular.module('ourbudget.controllers', [])
 
 	$ionicLoading.show()
 
-  	$http.get('http://192.168.0.3:8080/ourbudget/budgets/user/581492b034704ea01708f1ff')
+  	$http.get('http://192.168.0.4:8080/ourbudget/budgets/user/')
   		.success(function(result){
   			$scope.budgets = result;
   			$ionicLoading.hide()
 	 })
 
 	 $scope.newBudget = function(budget) {
-		 $http.post('http://192.168.0.3:8080/ourbudget/', budget)
+		 $http.post('http://192.168.0.4:8080/ourbudget/', budget)
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
 					$scope.budget = {
 						name: '',
-						users: ['581492b034704ea01708f1ff']
+						users: ['']
 					}
 		})
 	 }
@@ -70,7 +70,7 @@ angular.module('ourbudget.controllers', [])
 
 	$ionicLoading.show()
 
-	$http.get('http://192.168.0.3:8080/ourbudget/'+$stateParams.id)
+	$http.get('http://192.168.0.4:8080/ourbudget/'+$stateParams.id)
 		.success(function(result){
 		 $scope.budget = result
 		 $ionicLoading.hide()
@@ -79,18 +79,22 @@ angular.module('ourbudget.controllers', [])
 
 
 	$scope.newRevenue = function(revenue) {
-		 $http.put('http://192.168.0.3:8080/ourbudget/revenue/'+$stateParams.id, revenue)
+		 $ionicLoading.show()
+		 $http.put('http://192.168.0.4:8080/ourbudget/revenue/'+$stateParams.id, revenue)
 			.success(function(result) {
 			   $scope.budget = result
+			   $ionicLoading.hide()
 			   $scope.modalRevenue.hide()
 		})
 	}
 
 
 	$scope.newExpenditure = function(expenditure) {
-		 $http.put('http://192.168.0.3:8080/ourbudget/expenditure/'+$stateParams.id, expenditure)
+		$ionicLoading.show()
+		 $http.put('http://192.168.0.4:8080/ourbudget/expenditure/'+$stateParams.id, expenditure)
 			.success(function(result) {
 			   $scope.budget = result
+			   $ionicLoading.hide()
 			   $scope.modalExpenditure.hide()
 		})
 	}
