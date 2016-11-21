@@ -68,10 +68,12 @@ angular.module('ourbudget.controllers', [])
 	});
 
 
+	$ionicLoading.show()
 
 	$http.get('http://192.168.0.3:8080/ourbudget/'+$stateParams.id)
 		.success(function(result){
 		 $scope.budget = result
+		 $ionicLoading.hide()
 	})
 
 
