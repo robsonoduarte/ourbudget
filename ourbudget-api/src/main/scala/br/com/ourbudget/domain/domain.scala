@@ -2,7 +2,7 @@ package br.com.ourbudget.domain
 
 
 case class Revenue(name: String, value: Double, received: Boolean = false)
-case class Expenditure(name: String, value: Double, liquidated: Boolean = false)
+case class Expenditure(name: String, value: Double, tags: Array[String] = Array(), liquidated: Boolean = false)
 
 
 // TODO: Study some way to allow create the Budget only with name...
