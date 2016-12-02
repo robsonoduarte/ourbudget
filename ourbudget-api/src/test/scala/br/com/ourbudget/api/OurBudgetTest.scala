@@ -70,11 +70,14 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
   }
 
 
-  test("should liquedate Expenditure by id"){
+  test("should liquedated Expenditure by id"){
      put(s"/expenditure/liquidated/id"){
        val ex = parse(body)
      }
   }
+
+
+
 
 
 
