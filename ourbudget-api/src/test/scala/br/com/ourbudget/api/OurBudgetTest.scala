@@ -77,6 +77,12 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
   }
 
 
+   test("should returns Expenditures by tag"){
+     put(s"/expenditure/tag/id"){
+       val ex = parse(body)
+     }
+  }
+
 
 
 
