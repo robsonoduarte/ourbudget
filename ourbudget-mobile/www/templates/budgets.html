@@ -2,21 +2,22 @@
 	<ion-nav-buttons side="primary">
       <button class="button button-icon ion-ios-plus" ng-click="modal.show()">
       </button>
-    </ion-nav-buttons>	
+    </ion-nav-buttons>
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="budget in budgets" href="#/app/budget/{{budget.id}}">
-        {{budget.name}}
+         <i class=" icon  ng-class: budget.closed ? 'ion-locked' : 'ion-unlocked';"></i>
+    	 	{{budget.name}}
       </ion-item>
     </ion-list>
   </ion-content>
-  
-  
+
+
   <script id="new-budget.html" type="text/ng-template">
   	<div ng-include src="'templates/modal/new-budget.html'"></div>
   </script>
-  
-  
+
+
 </ion-view>
 
 
