@@ -5,9 +5,14 @@
     </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="budget in budgets" href="#/app/budget/{{budget.id}}">
+      <ion-item ng-repeat="budget in budgets" href="#/app/budget/{{budget.id}}" >
          <i class=" icon  ng-class: budget.closed ? 'ion-locked' : 'ion-unlocked';"></i>
     	 	{{budget.name}}
+    	  <span class="item-note ng-class: budget.balance > 0.0 ? 'positive' : 'assertive';"  >
+    		<span ng-if="budget.balance > 0.0" >+</span>
+    		<span ng-if="budget.balance < 0.0" >-</span>
+    		R$ {{budget.balance | number:2}}
+    	</span>
       </ion-item>
     </ion-list>
   </ion-content>
