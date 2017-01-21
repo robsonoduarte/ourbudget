@@ -1,4 +1,4 @@
-angular.module('ourbudget.controllers', [])
+angular.module('ourbudget.controllers', ['ngTagsInput'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
   // With the new view caching in Ionic, Controllers are only called
@@ -15,7 +15,7 @@ angular.module('ourbudget.controllers', [])
 
 	$scope.budget = {
 			name: '',
-			users: ['']
+			users: ['581b5368e4700fab384fc1c3']
 		}
 
 	$ionicModal.fromTemplateUrl('new-budget.html', {
@@ -27,20 +27,21 @@ angular.module('ourbudget.controllers', [])
 
 	$ionicLoading.show()
 
-  	$http.get('http://192.168.0.4:8080/ourbudget/budgets/user/')
+
+  	$http.get('http://localhost:8081/ourbudget/budgets/user/581b5368e4700fab384fc1c3')
   		.success(function(result){
   			$scope.budgets = result;
   			$ionicLoading.hide()
 	 })
 
 	 $scope.newBudget = function(budget) {
-		 $http.post('http://192.168.0.4:8080/ourbudget/', budget)
+		 $http.post('http://localhost:8081/ourbudget/', budget)
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
 					$scope.budget = {
 						name: '',
-						users: ['']
+						users: ['581b5368e4700fab384fc1c3']
 					}
 		})
 	 }
@@ -70,7 +71,7 @@ angular.module('ourbudget.controllers', [])
 
 	$ionicLoading.show()
 
-	$http.get('http://192.168.0.4:8080/ourbudget/'+$stateParams.id)
+	$http.get('http://localhost:8081/ourbudget/'+$stateParams.id)
 		.success(function(result){
 		 $scope.budget = result
 		 $ionicLoading.hide()
@@ -80,7 +81,7 @@ angular.module('ourbudget.controllers', [])
 
 	$scope.newRevenue = function(revenue) {
 		 $ionicLoading.show()
-		 $http.put('http://192.168.0.4:8080/ourbudget/revenue/'+$stateParams.id, revenue)
+		 $http.put('http://localhost:8081/ourbudget/revenue/'+$stateParams.id, revenue)
 			.success(function(result) {
 			   $scope.budget = result
 			   $ionicLoading.hide()
@@ -89,9 +90,19 @@ angular.module('ourbudget.controllers', [])
 	}
 
 
+
+	/*$scope.expenditure = {
+			tags : []
+	}*/
+
+
 	$scope.newExpenditure = function(expenditure) {
+
+		console.log(expenditure.tags)
+
+
 		$ionicLoading.show()
-		 $http.put('http://192.168.0.4:8080/ourbudget/expenditure/'+$stateParams.id, expenditure)
+		 $http.put('http://localhost:8081/ourbudget/expenditure/'+$stateParams.id, expenditure)
 			.success(function(result) {
 			   $scope.budget = result
 			   $ionicLoading.hide()
