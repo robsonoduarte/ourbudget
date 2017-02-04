@@ -1,9 +1,9 @@
-var ourbudget = angular.module('ourbudget.controllers', ['ngTagsInput'])
+angular.module('ourbudget.controllers', ['ngTagsInput'])
 
-ourbudget.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {})
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {})
 
 
-ourbudget.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
+.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
 
 	$scope.budget = {
 			name: '',
@@ -42,7 +42,7 @@ ourbudget.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading,
 
 
 
-ourbudget.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
+.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
 
 
 
@@ -104,8 +104,8 @@ ourbudget.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, 
 // flat tag only to value text
 function flatTags(tags) {
 	var flat = []
-	for (var y in tags) {
-		flat.push(tags[y].text)
+	for (var i in tags) {
+		flat.push(tags[i].text)
 	}
 	return flat
 }
