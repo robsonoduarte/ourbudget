@@ -18,9 +18,8 @@
           <input type="number" ng-model="expenditure.value">
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">Tags</span>
-          <input type="text" ng-model="expenditure.tags">
+        <label class="item item-input" style="padding-left: 5px;">
+	       <tags-input ng-model="expenditure.tags" placeholder="+ Tag" ></tags-input>
         </label>
 
 
