@@ -1,17 +1,9 @@
-angular.module('ourbudget.controllers', ['ngTagsInput'])
+var ourbudget = angular.module('ourbudget.controllers', ['ngTagsInput'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-})
+ourbudget.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {})
 
 
-.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
+ourbudget.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
 
 	$scope.budget = {
 			name: '',
@@ -50,7 +42,9 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 
 
 
-.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
+ourbudget.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
+
+
 
 
 	$ionicModal.fromTemplateUrl('new-revenue.html', {
@@ -90,16 +84,8 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 	}
 
 
-
-	/*$scope.expenditure = {
-			tags : []
-	}*/
-
-
 	$scope.newExpenditure = function(expenditure) {
-
-		console.log(expenditure.tags)
-
+		expenditure.tags = flatTags(expenditure.tags)
 
 		$ionicLoading.show()
 		 $http.put('http://localhost:8081/ourbudget/expenditure/'+$stateParams.id, expenditure)
@@ -111,4 +97,16 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 	}
 
 });
+
+
+
+
+// flat tag only to value text
+function flatTags(tags) {
+	var flat = []
+	for (var y in tags) {
+		flat.push(tags[y].text)
+	}
+	return flat
+}
 
