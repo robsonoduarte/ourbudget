@@ -85,15 +85,20 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 
 
 	$scope.newExpenditure = function(expenditure) {
-		expenditure.tags = flatTags(expenditure.tags)
 
-		$ionicLoading.show()
-		 $http.put('http://localhost:8081/ourbudget/expenditure/'+$stateParams.id, expenditure)
-			.success(function(result) {
-			   $scope.budget = result
-			   $ionicLoading.hide()
-			   $scope.modalExpenditure.hide()
-		})
+		var valid = $("#expenditure").parsley().validate()
+
+		if(valid){
+			expenditure.tags = flatTags(expenditure.tags)
+
+			$ionicLoading.show()
+			 $http.put('http://localhost:8081/ourbudget/expenditure/'+$stateParams.id, expenditure)
+				.success(function(result) {
+				   $scope.budget = result
+				   $ionicLoading.hide()
+				   $scope.modalExpenditure.hide()
+			})
+		}
 	}
 
 });
