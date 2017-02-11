@@ -6,27 +6,26 @@
     </div>
   </ion-header-bar>
   <ion-content>
+  	<form id="expenditure">
       <div class="list">
 
-        <label class="item item-input">
-          <span class="input-label">Nome</span>
-          <input type="text" ng-model="expenditure.name">
+        <label class="item item-input item-stacked-label">
+          <input type="text" ng-model="expenditure.name" required  data-parsley-error-message="Digite o Nome" placeholder="Nome">
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">Valor</span>
-          <input type="number" ng-model="expenditure.value">
+        <label class="item item-input item-stacked-label">
+          <input type="number" ng-model="expenditure.value" required  data-parsley-error-message="Digite o valor" placeholder="Valor">
         </label>
 
         <label class="item item-input" style="padding-left: 5px;">
-	       <tags-input ng-model="expenditure.tags" placeholder="+ Tag" ></tags-input>
+	       <tags-input ng-model="expenditure.tags" placeholder="+ Tag" required  data-parsley-error-message="temp lsslslsllsl"></tags-input>
         </label>
 
 
         <label class="item">
           <button class="button button-block button-positive" ng-click="newExpenditure(expenditure)">Salvar</button>
         </label>
-
       </div>
+     </form>
   </ion-content>
 </ion-modal-view>
