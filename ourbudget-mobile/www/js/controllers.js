@@ -20,14 +20,14 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 	$ionicLoading.show()
 
 
-  	$http.get('http://localhost:8081/ourbudget/budgets/user/581b5368e4700fab384fc1c3')
+  	$http.get('http://localhost:8080/ourbudget/budgets/user/581b5368e4700fab384fc1c3')
   		.success(function(result){
   			$scope.budgets = result;
   			$ionicLoading.hide()
 	 })
 
 	 $scope.newBudget = function(budget) {
-		 $http.post('http://localhost:8081/ourbudget/', budget)
+		 $http.post('http://localhost:8080/ourbudget/', budget)
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
@@ -65,7 +65,7 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 
 	$ionicLoading.show()
 
-	$http.get('http://localhost:8081/ourbudget/'+$stateParams.id)
+	$http.get('http://localhost:8080/ourbudget/'+$stateParams.id)
 		.success(function(result){
 		 $scope.budget = result
 		 $ionicLoading.hide()
@@ -75,7 +75,7 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 
 	$scope.newRevenue = function(revenue) {
 		 $ionicLoading.show()
-		 $http.put('http://localhost:8081/ourbudget/revenue/'+$stateParams.id, revenue)
+		 $http.put('http://localhost:8080/ourbudget/revenue/'+$stateParams.id, revenue)
 			.success(function(result) {
 			   $scope.budget = result
 			   $ionicLoading.hide()
@@ -86,19 +86,19 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 
 	$scope.newExpenditure = function(expenditure) {
 
-		var valid = $("#expenditure").parsley().validate()
+		/*var valid = $("#expenditure").parsley().validate()*/
 
-		if(valid){
+		/*if(valid){*/
 			expenditure.tags = flatTags(expenditure.tags)
 
 			$ionicLoading.show()
-			 $http.put('http://localhost:8081/ourbudget/expenditure/'+$stateParams.id, expenditure)
+			 $http.put('http://localhost:8080/ourbudget/expenditure/'+$stateParams.id, expenditure)
 				.success(function(result) {
 				   $scope.budget = result
 				   $ionicLoading.hide()
 				   $scope.modalExpenditure.hide()
 			})
-		}
+		/*}*/
 	}
 
 });
