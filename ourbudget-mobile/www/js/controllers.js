@@ -1,4 +1,4 @@
-angular.module('ourbudget.controllers', ['ngTagsInput'])
+angular.module('ourbudget.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {})
 
@@ -73,7 +73,7 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 
 
 
-	$scope.newRevenue = function(revenue) {
+	$scope.saveRevenue = function(revenue) {
 		 $ionicLoading.show()
 		 $http.put('http://localhost:8080/ourbudget/revenue/'+$stateParams.id, revenue)
 			.success(function(result) {
@@ -84,12 +84,9 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 	}
 
 
-	$scope.newExpenditure = function(expenditure) {
+	$scope.saveExpenditure = function(expenditure) {
 
-		/*var valid = $("#expenditure").parsley().validate()*/
-
-		/*if(valid){*/
-			expenditure.tags = flatTags(expenditure.tags)
+		   expenditure.tags =  expenditure.tags.match(/#\w+/g)
 
 			$ionicLoading.show()
 			 $http.put('http://localhost:8080/ourbudget/expenditure/'+$stateParams.id, expenditure)
@@ -98,20 +95,7 @@ angular.module('ourbudget.controllers', ['ngTagsInput'])
 				   $ionicLoading.hide()
 				   $scope.modalExpenditure.hide()
 			})
-		/*}*/
 	}
 
 });
-
-
-
-
-// flat tag only to value text
-function flatTags(tags) {
-	var flat = []
-	for (var i in tags) {
-		flat.push(tags[i].text)
-	}
-	return flat
-}
 
