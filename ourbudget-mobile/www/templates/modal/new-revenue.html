@@ -7,18 +7,19 @@
   </ion-header-bar>
   <ion-content>
       <div class="list">
-        <label class="item item-input">
+
+        <label class="item item-input item-floating-label">
           <span class="input-label">Nome</span>
-          <input type="text" ng-model="revenue.name">
+          <input type="text" ng-model="revenue.name" placeholder="Nome">
         </label>
-        
-        <label class="item item-input">
+
+        <label class="item item-input item-floating-label">
           <span class="input-label">Valor</span>
-          <input type="number" ng-model="revenue.value">
+          <input type="number" ng-model="revenue.value" placeholder="Valor">
         </label>
-        
+
         <label class="item">
-          <button class="button button-block button-positive" ng-click="newRevenue(revenue)">Salvar</button>
+          <button class="button button-block button-positive" ng-click="saveRevenue(revenue)">Salvar</button>
         </label>
       </div>
   </ion-content>
