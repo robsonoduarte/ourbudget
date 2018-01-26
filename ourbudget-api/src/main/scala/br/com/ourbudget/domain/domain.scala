@@ -10,13 +10,22 @@ case class Expenditure(name: String, value: Double, tags: Array[String] = Array(
 // TODO: Study some way to allow create the Budget only with name...
 case class Budget(id : String = "", name: String = "", balance: Double = 0.0,  closed: Boolean = false, revenues: Array[Revenue] = Array(), expenditures: Array[Expenditure] = Array(), users : Array[String] = Array()){
   def +(rev: Revenue) = copy(balance = balance + rev.value, revenues = revenues :+ _copy(rev))
+  def -(rev: Revenue) = copy( balance = --(rev),  revenues = remove(rev))
   def +(exp: Expenditure) = copy(balance = balance - exp.value,  expenditures = expenditures :+ _copy(exp) )
   def +(user: User) = copy(users = users :+ user.id)
-  
- 
+
+
   private def _copy(rev: Revenue) = rev.copy(name = rev.name, value = rev.value, index = revenues.length)
-  private def _copy(exp: Expenditure) = exp.copy(name=exp.name, value=exp.value, tags=exp.tags, index = expenditures.length)
-  
+  private def _copy(exp: Expenditure) = exp.copy(name = exp.name, value = exp.value, tags = exp.tags, index = expenditures.length)
+
+  private def --(rev: Revenue) = if(revenues.contains(rev)) balance - rev.value else balance
+
+
+  private def remove(rev: Revenue) = {
+    val revs = revenues.filter(! _.equals(rev))
+    revs.map(r => r.copy(index = (revs.indexOf(r)))).toArray
+  }
+
 }
 
 
