@@ -10,11 +10,11 @@ class BudgetServiceSpec extends FlatSpec with Matchers {
 
 
 
-  // TODO: stop developing to studying Di in scala
+/*  // TODO: stop developing to studying Di in scala
   it should "save the budget" in {
     val budget = service.save(new Budget())
     budget should not equal(null)
-  }
+  }*/
 
 
 
