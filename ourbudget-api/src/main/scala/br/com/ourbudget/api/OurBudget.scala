@@ -33,7 +33,7 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
   post("/") {
     val budget = parsedBody.extract[Budget].copy(null) // clean id because it is generate by DB ( Mongo )
     save(budget)
-    notificator notify(s"""{"name":"${budget.name}"}""")
+ //   notificator notify(s"""{"name":"${budget.name}"}""")
     budget
   }
 
@@ -53,14 +53,14 @@ class OurBudget extends ScalatraServlet with JacksonJsonSupport {
     val revenue = parsedBody.extract[Revenue];
     val budget = findBudget + revenue
     save(budget)
-    notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
+  //  notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
     budget
   })
 
   put("/expenditure/:id") {
     val expenditure = parsedBody.extract[Expenditure]
     val budget = findBudget + expenditure
-    notificator notify(s"""{"name":"${budget.name}", "expenditure": "${expenditure.name}"}""")
+  //  notificator notify(s"""{"name":"${budget.name}", "expenditure": "${expenditure.name}"}""")
     save(budget)
     budget
   }
