@@ -12,7 +12,7 @@ import br.com.ourbudget.repo.Repo
 class RepoSpec extends FlatSpec with Matchers {
 
 
-	val budget = new Budget(null,"repository-test")
+	val budget = Budget(id = null, name = "repository-test")
 	val repository = new Repo
 
 
