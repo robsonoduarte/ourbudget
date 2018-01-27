@@ -9,7 +9,7 @@ import org.scalatest.Matchers
 class BudgetSpec extends FlatSpec with Matchers {
 
 
-	  val budget = new Budget(name = "Travel")
+	  val budget = Budget(name = "Travel")
 
 
 

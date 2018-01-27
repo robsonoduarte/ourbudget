@@ -8,7 +8,7 @@ case class Expenditure(name: String, value: Double, tags: Array[String] = Array(
 
 
 // TODO: Study some way to allow create the Budget only with name...
-case class Budget(id : String = "", name: String = "", balance: Double = 0.0,  closed: Boolean = false, revenues: Array[Revenue] = Array(), expenditures: Array[Expenditure] = Array(), users : Array[String] = Array()){
+case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed: Boolean = false, revenues: Array[Revenue] = Array(), expenditures: Array[Expenditure] = Array(), users : Array[String] = Array()){
   def +(rev: Revenue) = copy(balance = balance + rev.value, revenues = revenues :+ _copy(rev))
   def -(rev: Revenue) = copy( balance = --(rev),  revenues = remove(rev))
   def +(exp: Expenditure) = copy(balance = balance - exp.value,  expenditures = expenditures :+ _copy(exp) )
@@ -32,5 +32,6 @@ case class Budget(id : String = "", name: String = "", balance: Double = 0.0,  c
 case class User(id: String = "", name: String = "", budgets: Array[String] = Array()){
   def +(budget: Budget) = copy(budgets = budgets :+ budget.id)
 }
+
 
 
