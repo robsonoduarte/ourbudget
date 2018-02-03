@@ -56,7 +56,7 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val expenditure = """{ "name": "Hotel", "value": 200 , "tags" : ["creditcard","money"], "liquidated" : true}"""
+  val expenditure = """{ "name": "Hotel", "value": 200 , "category" : "travel" , "liquidated" : true}"""
 
   test("should add the Expenditure in the Budget searching by id"){
      put(s"/expenditure/$id", expenditure ){
@@ -64,8 +64,7 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
         ex.name should be ("Hotel")
         ex.value should be (200.0)
         ex.liquidated should be (true)
-        ex.tags(0) should be ("creditcard")
-        ex.tags(1) should be ("money")
+        ex.category should be ("travel")
      }
   }
 
