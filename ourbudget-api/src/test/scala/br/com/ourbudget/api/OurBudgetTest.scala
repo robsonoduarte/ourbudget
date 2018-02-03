@@ -23,11 +23,10 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-
   val budget = """{"name": "Travel", "users":  ["123"]}""""
 
    test("should create new Budget and return json with the id"){
-     post("/", budget ){
+     post("/budgets", budget ){
        val json = parse(body)
        id = (json \ "id").extract[String]
        id should not be empty
@@ -36,30 +35,47 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
 
 
    test("should create new Budget"){
-     post("/", budget ){
+     post("/budgets", budget ){
        val budget = parse(body).extract[Budget]
        budget.name should be("Travel")
        budget.users contains("123")
      }
   }
 
+  
+  test("should get Budgets by id"){
+	  get(s"/budgets/$id"){
+		  val budget =  parse(body).extract[Budget]
+		  budget.id should be equals(id)
+	  }
+  } 
+  
+  
+  test("should get all Budgets in base"){ // FIXME: the simple get method to test the first integration with App mobile
+     get("/budgets"){
+       val budgets =  parse(body).extract[List[Budget]]
+       budgets.size should be > 1  // FIXME: we need make one solution to data base integration tests........ 
+     }
+  }
+  
 
 
-  val revenue = """{ "name": "Salary", "value": 400 }"""
-
+  var revenue = """{ "name": "Salary", "value": 400 }"""
   test("should add the Revenue in the Budget searching by id"){
-     put(s"/revenue/$id", revenue ){
+     post(s"/budgets/$id/revenue", revenue ){       
         val budget = parse(body).extract[Budget]
         budget.revenues should contain (Revenue("Salary", 400))
      }
   }
-
-
+  
+  
+  	
+	
 
   val expenditure = """{ "name": "Hotel", "value": 200 , "category" : "travel" , "liquidated" : true}"""
 
   test("should add the Expenditure in the Budget searching by id"){
-     put(s"/expenditure/$id", expenditure ){
+     post(s"/budgets/$id/expenditure", expenditure ){
         val ex = parse(body).extract[Budget].expenditures(0)
         ex.name should be ("Hotel")
         ex.value should be (200.0)
@@ -68,56 +84,6 @@ class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
      }
   }
 
-
- /* test("should liquedated Expenditure by id"){
-     put(s"/expenditure/liquidated/id"){
-       val ex = parse(body)
-     }
-  }
-
-
-   test("should returns Expenditures by tag"){
-     put(s"/expenditure/tag/id"){
-       val ex = parse(body)
-     }
-  }*/
-
-
-
-
-
-  test("should get Budgets by id"){
-	  get(s"/$id"){
-		  val budget =  parse(body).extract[Budget]
-		  budget.id should be equals(id)
-	  }
-  }
-
-
-
-  test("should get all Budgets in base"){ // FIXME: the simple get method to test the first integration with App mobile
-     get("/all"){
-       val budgets =  parse(body).extract[List[Budget]]
-       /*budgets should have size 2*/  // FIXME: we need make one solution to data base integration tests........
-     }
-  }
-
-
-
-  test("should get all Budgets of the user"){
-     get("/budgets/user/57a51db034e53360137542aa"){
-       val budgets =  parse(body).extract[List[Budget]]
-       /*budgets should have size 2*/  // FIXME: we need make one solution to data base integration tests........
-     }
-  }
-
-
-
-
-
-
-
-
-
-
+  
+   
 }
