@@ -17,7 +17,7 @@ lazy val root = (project in file(".")).settings(
     "org.springframework.data" %  "spring-data-mongodb" % "1.9.2.RELEASE",
 
     "org.scalatest"     %% "scalatest"          %  "3.0.0"  % "test",
-    "org.scalatra"      %% "scalatra-scalatest" %  "2.4.1"  % "test",
+    "org.scalatra"      %% "scalatra-scalatest" %  "2.6.2"  % "test",
 
 
     "ch.qos.logback"    %  "logback-classic"   % "1.1.3"    % "runtime",
