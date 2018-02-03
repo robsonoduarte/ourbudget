@@ -62,22 +62,21 @@ class BudgetSpec extends FlatSpec with Matchers {
 	   copy.revenues(1).index should be(1)
    }
 
+   "it" should "subtract the Revenues in balance of the Budget" in {
+	     val copy = budget + Revenue("Hotel", 100.0) + Revenue("Salary", 100.0) + Revenue("Hotel", 100.0) - Revenue("Salary", 100.0, false, 1)
+			 copy.balance should be (200.0)
+   }
+   
    "it" should "ignore the remove of Revenues when Budget don't have it" in {
 	   val copy = budget + Revenue("Salary", 100.0) - Revenue("Salary", 100.0, false, 0) - Revenue("Salary", 100.0, false, 1)
 	   copy.revenues.length should be(0)
    }
 
-   "it" should "subtract the Revenues in balance of the Budget" in {
-	   val copy = budget + Revenue("Hotel", 100.0) + Revenue("Salary", 100.0) + Revenue("Hotel", 100.0) - Revenue("Salary", 100.0, false, 1)
-	   copy.balance should be (200.0)
-   }
 
    "it" should "ignore the subtract of Revenues when Budget don't have it" in {
 	   val copy = budget + Revenue("Salary", 100.0) - Revenue("Salary", 100.0, false, 0) - Revenue("Salary", 100.0, false, 1)
 	   copy.balance should be(0.0)
    }
-
-
 
 
 
@@ -133,25 +132,23 @@ class BudgetSpec extends FlatSpec with Matchers {
 	   copy.expenditures should not contain(Expenditure("Car", 100.0, "Travel", false, 1))
    }
    
+  
+    "it" should "remove the Expenditure in balance of the Budget" in {
+	   val copy = budget + Revenue("Salary", 400.0) + Expenditure("Hotel", 100.0, "Travel") + Expenditure("Hotel", 100.0, "Travel") - Expenditure("Hotel", 100.0, "Travel", false, 1)
+	   copy.balance should be (300.0)
+   }
    
    
-/*   
+   
 
-   "it" should "ignore the remove of Revenues when Budget don't have it" in {
-	   val copy = budget + Revenue("Salary", 100.0) - Revenue("Salary", 100.0, false, 0) - Revenue("Salary", 100.0, false, 1)
-	   copy.revenues.length should be(0)
+   "it" should "ignore the remove of Expenditure when Budget don't have it" in {
+	   val copy = budget + Revenue("Salary", 100.0) + Expenditure("Hotel", 100.0, "Travel") - Expenditure("Hotel", 100.0, "Travel", false, 0) - Expenditure("Hotel", 100.0, "Travel", false, 0)
+	   copy.expenditures.length should be(0)
+	   copy.balance should be(100.0)
    }
 
-   "it" should "subtract the Revenues in balance of the Budget" in {
-	   val copy = budget + Revenue("Hotel", 100.0) + Revenue("Salary", 100.0) + Revenue("Hotel", 100.0) - Revenue("Salary", 100.0, false, 1)
-	   copy.balance should be (200.0)
-   }
-
-   "it" should "ignore the subtract of Revenues when Budget don't have it" in {
-	   val copy = budget + Revenue("Salary", 100.0) - Revenue("Salary", 100.0, false, 0) - Revenue("Salary", 100.0, false, 1)
-	   copy.balance should be(0.0)
-   }*/
-
+   
+   
 
 
    // USER TESTS

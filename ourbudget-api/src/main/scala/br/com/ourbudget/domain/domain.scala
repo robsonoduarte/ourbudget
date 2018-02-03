@@ -12,7 +12,7 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
   def +(rev: Revenue) = copy(balance = balance + rev.value, revenues = revenues :+ _copy(rev))
   def -(rev: Revenue) = copy( balance = --(rev),  revenues = remove(rev))
   def +(exp: Expenditure) = copy(balance = balance - exp.value,  expenditures = expenditures :+ _copy(exp) )
-  def -(exp: Expenditure) = copy(expenditures = remove(exp))
+  def -(exp: Expenditure) = copy(balance = ++(exp), expenditures = remove(exp))
   def +(user: User) = copy(users = users :+ user.id)
 
 
@@ -20,6 +20,7 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
   private def _copy(exp: Expenditure) = exp.copy(name = exp.name, value = exp.value, category = exp.category, index = expenditures.length)
 
   private def --(rev: Revenue) = if(revenues.contains(rev)) balance - rev.value else balance
+  private def ++(exp: Expenditure) = if(expenditures.contains(exp)) balance + exp.value else balance
 
 
   private def remove(rev: Revenue) = {
