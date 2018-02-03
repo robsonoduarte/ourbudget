@@ -4,7 +4,7 @@ import scala.collection.mutable.ArrayBuffer
 
 
 case class Revenue(name: String, value: Double, received: Boolean = false, index: Int = 0)
-case class Expenditure(name: String, value: Double, tags: Array[String] = Array(), liquidated: Boolean = false, index: Int = 0)
+case class Expenditure(name: String, value: Double, category: String, liquidated: Boolean = false, index: Int = 0)
 
 
 // TODO: Study some way to allow create the Budget only with name...
@@ -17,7 +17,7 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
 
 
   private def _copy(rev: Revenue) = rev.copy(name = rev.name, value = rev.value, index = revenues.length)
-  private def _copy(exp: Expenditure) = exp.copy(name = exp.name, value = exp.value, tags = exp.tags, index = expenditures.length)
+  private def _copy(exp: Expenditure) = exp.copy(name = exp.name, value = exp.value, category = exp.category, index = expenditures.length)
 
   private def --(rev: Revenue) = if(revenues.contains(rev)) balance - rev.value else balance
 
