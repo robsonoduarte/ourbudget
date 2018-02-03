@@ -24,7 +24,8 @@ lazy val root = (project in file(".")).settings(
     "javax.servlet"     %  "javax.servlet-api" % "3.1.0"    % "provided"
   )
 
-).settings(jetty(): _*)
+)
+//.settings(jetty(): _*)
 
 
 enablePlugins(sbtdocker.DockerPlugin, JavaAppPackaging)
