@@ -12,14 +12,14 @@ import org.json4s._
 import org.json4s.jackson.JsonMethods._
 import java.sql.Date
 
-class OurBudgetTests extends ScalatraSuite with FunSuiteLike {
+class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
 
   var id : String = null
 
   implicit val formats = DefaultFormats
 
 
-  addServlet(classOf[OurBudget], "/*")
+  addServlet(classOf[OurBudgetController], "/*")
 
 
 

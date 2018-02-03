@@ -9,24 +9,21 @@ import org.scalatra.json._
 import br.com.ourbudget.domain.Revenue
 import br.com.ourbudget.domain.Expenditure
 import br.com.ourbudget.repo.Repo
-import scalaj.http.Http
 import br.com.ourbudget.service.Notificator
+import scalaj.http.Http
+import org.scalatra.swagger.Swagger
+import org.scalatra.swagger.SwaggerSupport
 
-class OurBudget extends ScalatraServlet with JacksonJsonSupport {
+class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
 
   protected implicit lazy val jsonFormats: Formats = DefaultFormats
-
+  
    private val repo = Repo()
    private val notificator = Notificator()
-
 
   before() {
     contentType = formats("json")
   }
-
-
-
-
 
 
 
