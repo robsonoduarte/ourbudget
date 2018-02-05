@@ -29,8 +29,8 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
   }
   
   private def remove(exp: Expenditure) = {
-		  val exps = expenditures.filter(! _.equals(exp))
-		  exps.map(e => e.copy(index = (exps.indexOf(e)))).toArray
+	val exps = expenditures.filter(! _.equals(exp))
+	exps.map(e => e.copy(index = (exps.indexOf(e)))).toArray
   }
 
 }
