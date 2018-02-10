@@ -6,14 +6,16 @@
     </div>
   </ion-header-bar>
   <ion-content>
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Nome</span>
-          <input type="text" ng-model="budget.name">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" ng-click="newBudget(budget)">Salvar</button>
-        </label>
-      </div>
+  	<form   id="form-budget" >
+	     <div class="list">
+	        <label class="item item-input item-floating-label">
+          		<span class="input-label">Nome</span>
+          		<input type="text" ng-model="budget.name" required placeholder="Nome" data-parsley-required-message="Nome é Obrigatório">
+        	</label>
+	        <label class="item">
+	          <button class="button button-block button-positive" ng-click="newBudget(budget)">Salvar</button>
+	        </label>
+	      </div>
+      </form>
   </ion-content>
 </ion-modal-view>
