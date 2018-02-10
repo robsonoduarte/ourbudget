@@ -7,8 +7,8 @@ import scalaj.http.Http
 
 class Notificator {
 
-	private val app_id = "8f88f81f-8e2f-4433-b85a-27e387bec18d"
-	private val api_key = "YWUwMTBmMDktNzQwZC00MTMyLTg0YTMtZjE0YjlmNWQ1OTMx"
+	private val app_id = ""
+	private val api_key = ""
 
 
 
