@@ -27,7 +27,11 @@ angular.module('ourbudget.controllers', [])
 	 })
 
 	 $scope.newBudget = function(budget) {
-		 $http.post('http://127.0.0.1:8080/ourbudget/budgets', budget)
+		
+		var valid = $('#form-budget').parsley().validate()
+				
+		if(valid){
+			$http.post('http://127.0.0.1:8080/ourbudget/budgets', budget)
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
@@ -35,7 +39,9 @@ angular.module('ourbudget.controllers', [])
 						name: '',
 						users: ['581b5368e4700fab384fc1c3']
 					}
-		})
+			})
+		}		
+		 
 	 }
 })
 
@@ -74,13 +80,17 @@ angular.module('ourbudget.controllers', [])
 
 
 	$scope.saveRevenue = function(revenue) {
-		 $ionicLoading.show()
-		 $http.post('http://127.0.0.1:8080/ourbudget/budgets/'+$stateParams.id+'/revenue', revenue)
+		
+		var valid = $('#form-revenue').parsley().validate()
+		if(valid){
+			$ionicLoading.show()
+			$http.post('http://127.0.0.1:8080/ourbudget/budgets/'+$stateParams.id+'/revenue', revenue)
 			.success(function(result) {
-			   $scope.budget = result
-			   $ionicLoading.hide()
-			   $scope.modalRevenue.hide()
-		})
+				$scope.budget = result
+				$ionicLoading.hide()
+				$scope.modalRevenue.hide()
+			})			
+		}
 	}
 
 
