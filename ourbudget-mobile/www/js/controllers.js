@@ -20,14 +20,14 @@ angular.module('ourbudget.controllers', [])
 	$ionicLoading.show()
 
 
-  	$http.get('http://localhost:8080/ourbudget/budgets/user/581b5368e4700fab384fc1c3')
+  	$http.get('http://127.0.0.1:8080/ourbudget/budgets')
   		.success(function(result){
   			$scope.budgets = result;
   			$ionicLoading.hide()
 	 })
 
 	 $scope.newBudget = function(budget) {
-		 $http.post('http://localhost:8080/ourbudget/', budget)
+		 $http.post('http://127.0.0.1:8080/ourbudget/budgets', budget)
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
@@ -65,7 +65,7 @@ angular.module('ourbudget.controllers', [])
 
 	$ionicLoading.show()
 
-	$http.get('http://localhost:8080/ourbudget/'+$stateParams.id)
+	$http.get('http://127.0.0.1:8080/ourbudget/budgets/'+$stateParams.id)
 		.success(function(result){
 		 $scope.budget = result
 		 $ionicLoading.hide()
@@ -75,7 +75,7 @@ angular.module('ourbudget.controllers', [])
 
 	$scope.saveRevenue = function(revenue) {
 		 $ionicLoading.show()
-		 $http.put('http://localhost:8080/ourbudget/revenue/'+$stateParams.id, revenue)
+		 $http.post('http://127.0.0.1:8080/ourbudget/budgets/'+$stateParams.id+'/revenue', revenue)
 			.success(function(result) {
 			   $scope.budget = result
 			   $ionicLoading.hide()
@@ -86,10 +86,8 @@ angular.module('ourbudget.controllers', [])
 
 	$scope.saveExpenditure = function(expenditure) {
 
-		   expenditure.tags =  expenditure.tags.match(/#\w+/g)
-
 			$ionicLoading.show()
-			 $http.put('http://localhost:8080/ourbudget/expenditure/'+$stateParams.id, expenditure)
+			 $http.post('http://127.0.0.1:8080/ourbudget/budgets/'+$stateParams.id+ '/expenditure', expenditure)
 				.success(function(result) {
 				   $scope.budget = result
 				   $ionicLoading.hide()
