@@ -14,7 +14,9 @@ lazy val root = (project in file(".")).settings(
   	"org.json4s"               %% "json4s-jackson"      % "3.3.0",
     "org.eclipse.jetty"        %  "jetty-webapp"        % "9.3.9.v20160517",
     "org.scalactic"            %% "scalactic"           % "3.0.0",
+    "org.mongodb" 			   %  "mongo-java-driver"   % "3.6.2",
     "org.springframework.data" %  "spring-data-mongodb" % "1.9.2.RELEASE",
+    
 
     "org.scalatest"     %% "scalatest"          %  "3.0.0"  % "test",
     "org.scalatra"      %% "scalatra-scalatest" %  "2.6.2"  % "test",
@@ -27,22 +29,3 @@ lazy val root = (project in file(".")).settings(
 )
 //.settings(jetty(): _*)
 
-
-enablePlugins(sbtdocker.DockerPlugin, JavaAppPackaging)
-
-
-dockerfile in docker := {
-  val appDir: File = stage.value
-  val targetDir = "/app"
-
-  new Dockerfile {
-    from("robsonoduarte/8-jre-alpine-bash")
-    entryPoint(s"$targetDir/bin/${executableScriptName.value}")
-    copy(appDir, targetDir)
-  }
-}
-
-
-imageNames in docker := Seq(
-  ImageName("ourbudget-api")
-)
