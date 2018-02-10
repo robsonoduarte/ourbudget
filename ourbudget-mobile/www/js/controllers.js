@@ -96,13 +96,17 @@ angular.module('ourbudget.controllers', [])
 
 	$scope.saveExpenditure = function(expenditure) {
 
-			$ionicLoading.show()
-			 $http.post('http://127.0.0.1:8080/ourbudget/budgets/'+$stateParams.id+ '/expenditure', expenditure)
+			var valid = $('#form-expenditure').parsley().validate()
+			
+			if(valid){				
+				$ionicLoading.show()
+				$http.post('http://127.0.0.1:8080/ourbudget/budgets/'+$stateParams.id+ '/expenditure', expenditure)
 				.success(function(result) {
-				   $scope.budget = result
-				   $ionicLoading.hide()
-				   $scope.modalExpenditure.hide()
-			})
+					$scope.budget = result
+					$ionicLoading.hide()
+					$scope.modalExpenditure.hide()
+				})
+			}
 	}
 
 });
