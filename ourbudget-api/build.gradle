@@ -1,0 +1,75 @@
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'eclipse'
+apply plugin: 'docker'
+apply plugin: 'application'
+
+
+sourceSets.main.scala.srcDir "src/main/java"
+sourceSets.test.scala.srcDir "src/test/java"
+sourceSets.main.java.srcDirs = []
+sourceSets.test.java.srcDirs = []
+
+
+
+
+buildscript{
+    repositories { jcenter() }
+    dependencies {
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
+    }
+}
+
+mainClassName = "br.com.ourbudget.api.OurBudgetLauncher"
+
+
+repositories{
+	mavenLocal()
+	mavenCentral()
+}
+
+
+
+
+
+
+dependencies{
+
+	compile 'org.jboss.weld.se:weld-se:2.3.5.Final'
+	compile 'org.scala-lang:scala-library:2.11.8'
+    compile 'org.scalatra:scalatra_2.11:2.4.0'
+    compile 'org.scalatra:scalatra-scalate_2.11:2.4.0'
+    compile 'org.scalatra:scalatra-json_2.11:2.4.0'
+	compile 'org.scalaj:scalaj-http_2.11:2.3.0'
+  	compile 'org.json4s:json4s-jackson_2.11:3.3.0'
+    compile 'org.eclipse.jetty:jetty-webapp:9.3.9.v20160517'
+    compile 'org.scalactic:scalactic_2.11:3.0.0'
+    compile 'org.mongodb:mongo-java-driver:3.6.2'
+    compile 'org.springframework.data:spring-data-mongodb:1.9.2.RELEASE'
+}
+
+
+
+
+
+
+
+docker {
+    baseImage 'robsonoduarte/8-jre-alpine-bash'
+}
+
+
+
+
+applicationDefaultJvmArgs = [
+	"-server",
+	"-Xms30m",
+	"-Xmx100m",
+	"-Denvironment=ho",
+	"-Dcom.sun.management.jmxremote",
+	"-Dcom.sun.management.jmxremote.port=1099",
+	"-Dcom.sun.management.jmxremote.rmi.port=1099",
+	"-Dcom.sun.management.jmxremote.authenticate=false",
+	"-Dcom.sun.management.jmxremote.ssl=false",
+	"-Djava.rmi.server.hostname=34.238.24.150"
+]
