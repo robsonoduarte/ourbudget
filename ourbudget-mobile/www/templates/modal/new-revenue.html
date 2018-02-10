@@ -6,21 +6,22 @@
     </div>
   </ion-header-bar>
   <ion-content>
+  	<form id="form-revenue">
       <div class="list">
-
         <label class="item item-input item-floating-label">
           <span class="input-label">Nome</span>
-          <input type="text" ng-model="revenue.name" placeholder="Nome">
+          <input type="text" ng-model="revenue.name" placeholder="Nome" required data-parsley-required-message="Nome é Obrigatório">
         </label>
 
         <label class="item item-input item-floating-label">
           <span class="input-label">Valor</span>
-          <input type="number" ng-model="revenue.value" placeholder="Valor">
+          <input type="number" ng-model="revenue.value" placeholder="Valor" required data-parsley-required-message="Valor é Obrigatório">
         </label>
 
         <label class="item">
           <button class="button button-block button-positive" ng-click="saveRevenue(revenue)">Salvar</button>
         </label>
       </div>
+     </form>
   </ion-content>
 </ion-modal-view>
