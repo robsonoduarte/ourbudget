@@ -16,7 +16,7 @@
 
         <label class="item item-input item-floating-label">
           <span class="input-label">Valor</span>
-          <input type="number" ng-model="expenditure.value"  required placeholder="Valor" data-parsley-required-message="Valor é Obrigatório">
+          <input type="number" ng-model="expenditure.value" step=".01"  required placeholder="Valor" data-parsley-required-message="Valor é Obrigatório" data-parsley-type-message="O valor deve conter apenas 2 digitos">
         </label>
 
 
