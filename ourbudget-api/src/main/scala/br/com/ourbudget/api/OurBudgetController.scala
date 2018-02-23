@@ -10,9 +10,8 @@ import br.com.ourbudget.domain.Revenue
 import br.com.ourbudget.domain.Expenditure
 import br.com.ourbudget.repo.Repo
 import br.com.ourbudget.service.Notificator
-import scalaj.http.Http
-import org.scalatra.swagger.Swagger
-import org.scalatra.swagger.SwaggerSupport
+
+
 
 class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
 
@@ -25,12 +24,18 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
     contentType = formats("json")
   }
 
+  //options("/*"){
+   // response.setHeader(
+     // "Access-Control-Allow-Headers", 
+     // request.getHeader("Access-Control-Request-Headers")
+     //);
+ // }
 
 
   post("/budgets") {
     val budget = parsedBody.extract[Budget].copy(null) // clean id because it is generate by DB ( Mongo )
     save(budget)
- //   notificator notify(s"""{"name":"${budget.name}"}""")
+   // notificator notify(s"""{"name":"${budget.name}"}""")
     budget
   }
 
@@ -45,7 +50,7 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
   
   post("/budgets/:id/revenue") {
     val revenue = parsedBody.extract[Revenue];
-    val budget = findBudget + revenue
+    val budget = findBudget :+ revenue
     save(budget)
   //  notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
     budget
@@ -54,7 +59,7 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
   post("/budgets/:id/expenditure") {
     val expenditure = parsedBody.extract[Expenditure]
     val budget = findBudget + expenditure
-  //  notificator notify(s"""{"name":"${budget.name}", "expenditure": "${expenditure.name}"}""")
+ //   notificator notify(s"""{"name":"${budget.name}", "expenditure": "${expenditure.name}"}""")
     save(budget)
     budget
   }
