@@ -23,7 +23,7 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
 
 
 
-  val budget = """{"name": "Travel", "users":  ["123"]}""""
+  val budget = """{"name": "API TEST", "users":  ["123"]}""""
 
    test("should create new Budget and return json with the id"){
      post("/budgets", budget ){
@@ -37,7 +37,7 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
    test("should create new Budget"){
      post("/budgets", budget ){
        val budget = parse(body).extract[Budget]
-       budget.name should be("Travel")
+       budget.name should be("API TEST")
        budget.users contains("123")
      }
   }
@@ -62,10 +62,18 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
 
   var revenue = """{ "name": "Salary", "value": 400 }"""
   test("should add the Revenue in the Budget searching by id"){
-     post(s"/budgets/$id/revenue", revenue ){       
+     post(s"/budgets/$id/revenues", revenue ){       
         val budget = parse(body).extract[Budget]
         budget.revenues should contain (Revenue("Salary", 400))
      }
+  }
+  
+  
+  test("should delete the Revenue in the Budget searching by id and index"){
+	  delete(s"/budgets/$id/revenues/0"){       
+		  val budget = parse(body).extract[Budget]
+			budget.revenues.length should be(0)
+	  }
   }
   
   
@@ -75,7 +83,7 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
   val expenditure = """{ "name": "Hotel", "value": 200 , "category" : "travel" , "liquidated" : true}"""
 
   test("should add the Expenditure in the Budget searching by id"){
-     post(s"/budgets/$id/expenditure", expenditure ){
+     post(s"/budgets/$id/expenditures", expenditure ){
         val ex = parse(body).extract[Budget].expenditures(0)
         ex.name should be ("Hotel")
         ex.value should be (200.0)
