@@ -20,7 +20,7 @@ angular.module('ourbudget.controllers', [])
 	$ionicLoading.show()
 
 
-  	$http.get('http://127.0.01:8080/ourbudget/budgets')
+  	$http.get('http://127.0.0.1:8080/ourbudget/api/v1/budgets')
   		.success(function(result){
   			$scope.budgets = result;
   			$ionicLoading.hide()
@@ -31,7 +31,7 @@ angular.module('ourbudget.controllers', [])
 		var valid = $('#form-budget').parsley().validate()
 				
 		if(valid){
-			$http.post('http://127.0.01:8080/ourbudget/budgets', budget)
+			$http.post('http://127.0.0.1:8080/ourbudget/api/v1/budgets', budget)
 			.success(function(result){
 				$scope.budgets.push(result)
 				$scope.modal.hide()
@@ -77,7 +77,7 @@ angular.module('ourbudget.controllers', [])
 	
 	$ionicLoading.show()
 
-	$http.get('http://127.0.01:8080/ourbudget/budgets/'+$stateParams.id)
+	$http.get('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id)
 		.success(function(result){
 		 $scope.budget = result
 		 $ionicLoading.hide()
@@ -91,7 +91,7 @@ angular.module('ourbudget.controllers', [])
 		
 		if(valid){
 			$ionicLoading.show()
-			$http.post('http://127.0.01:8080/ourbudget/budgets/'+$stateParams.id+'/revenue', revenue)
+			$http.post('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+'/revenues', revenue)
 			.success(function(result) {
 				$scope.budget = result
 				$ionicLoading.hide()
@@ -106,7 +106,7 @@ angular.module('ourbudget.controllers', [])
 			
 			if(valid){				
 				$ionicLoading.show()
-				$http.post('http://127.0.01:8080/ourbudget/budgets/'+$stateParams.id+ '/expenditure', expenditure)
+				$http.post('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+ '/expenditures', expenditure)
 				.success(function(result) {
 					$scope.budget = result
 					$ionicLoading.hide()
