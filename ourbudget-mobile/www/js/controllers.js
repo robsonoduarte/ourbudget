@@ -1,9 +1,9 @@
-angular.module('ourbudget.controllers', [])
+var app = angular.module('ourbudget.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {})
+app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {})
 
 
-.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
+app.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
 
 	$scope.budget = {
 			name: '',
@@ -48,12 +48,12 @@ angular.module('ourbudget.controllers', [])
 
 
 
-.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
+app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
 
 
 
 
-	$ionicModal.fromTemplateUrl('new-revenue.html', {
+	$ionicModal.fromTemplateUrl('revenue.html', {
 		scope: $scope,
 		animation: 'slide-in-up'
 	}).then(function(modal) {
@@ -76,14 +76,22 @@ angular.module('ourbudget.controllers', [])
 
 	
 	$ionicLoading.show()
-
-	$http.get('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id)
+	
+	
+	$scope.getBudget = function getBudget(){		
+		$http.get('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id)
 		.success(function(result){
-		 $scope.budget = result
-		 $ionicLoading.hide()
-	})
+			$scope.budget = result
+			$ionicLoading.hide()
+			$scope.modalRevenue.hide()
+		})
+	}
+	
+	$scope.getBudget()
+	
 
-
+	
+  // REVENUES	
 
 	$scope.saveRevenue = function(revenue) {
 				
@@ -96,10 +104,37 @@ angular.module('ourbudget.controllers', [])
 				$scope.budget = result
 				$ionicLoading.hide()
 				$scope.modalRevenue.hide()
+				$scope.revenue = {}
 			})			
 		}
 	}
+	
+	$scope.removeRevenue = function(revenue) {
+		$http.delete('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+'/revenues/'+revenue.index)
+		.success(function(result) {
+			$scope.budget = result
+			$ionicLoading.hide()
+			$scope.modalRevenue.hide()
+		})	
+	}
+	
+	$scope.newRevenue = function() {
+		$scope.revenue = {}
+		$scope.modalRevenue.show()
+	}
+	
+	$scope.editRevenue = function(revenue) {
+		$scope.revenue = revenue
+		$scope.modalRevenue.show()
+	}
+	
 
+		
+	
+	
+	
+	// EXPENDITURES
+	
 	$scope.saveExpenditure = function(expenditure) {
 		
 			var valid = $('#form-expenditure').parsley().validate()
@@ -114,8 +149,5 @@ angular.module('ourbudget.controllers', [])
 				})
 			}
 	}
-	
-	
-	
 });
 
