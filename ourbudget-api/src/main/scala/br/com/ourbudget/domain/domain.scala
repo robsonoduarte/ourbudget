@@ -9,9 +9,9 @@ case class Expenditure(name: String, value: Double, category: String, liquidated
 
 // TODO: Study some way to allow create the Budget only with name...
 case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed: Boolean = false, revenues: Array[Revenue] = Array(), expenditures: Array[Expenditure] = Array(), users : Array[String] = Array()){
-  def :+(rev: Revenue) = copy(balance = balance + rev.value, revenues = revenues :+ _copy(rev))
+  def addRev(rev: Revenue) = copy(balance = balance + rev.value, revenues = revenues :+ _copy(rev))
     
-  def :-(index: Int) = copy( 
+  def removeRev(index: Int) = copy( 
       balance =  {
         try {          
         	balance - revenues(index).value

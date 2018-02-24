@@ -15,40 +15,40 @@ class BudgetSpec extends FlatSpec with Matchers {
  // REVENUES TESTS TO :+ METHOD
 
  "it" should "return one new copy of Budget when add new Revenue" in {
-     val copy = budget :+ Revenue("Salary", 100.0)
+     val copy = budget addRev Revenue("Salary", 100.0)
      copy should not be theSameInstanceAs(budget)
   }
 
    "it" should "return one new copy of Budget with a new Revenues in List of Revenues" in {
-     val copy = budget :+ Revenue("Salary", 100.0)
+     val copy = budget addRev Revenue("Salary", 100.0)
      copy.revenues should have length 1
    }
 
 
    "it" should "return one new copy of Budget with the new Revenues with index" in {
-	    val copy = budget :+ Revenue("Salary", 100.0) :+ Revenue("Investiments", 100.0)
+	    val copy = budget addRev Revenue("Salary", 100.0) addRev Revenue("Investiments", 100.0)
 	    copy.revenues(0).index should be(0)
 	    copy.revenues(1).index should be(1)
    }
 
 
    "it" should "add the Revenues in balance of the Budget" in {
-	    val copy = budget :+ Revenue("Salary", 100.0) :+ Revenue("Investiments", 100.0)
+	    val copy = budget addRev Revenue("Salary", 100.0) addRev Revenue("Investiments", 100.0)
 	    copy.balance should be (200.0)
    }
 
 
 
-   // REVENUES TESTS TO :- METHOD
+   // REVENUES TESTS TO removeRev METHOD
 
    "it" should "return one new copy of Budget when remove one Revenue" in {
-	    val copy = budget :- 0
+	    val copy = budget removeRev 0
 	    copy should not be theSameInstanceAs(budget)
     }
 
 	
    "it" should "return one new copy of Budget without Revenue when remove the Revenue" in {
-	   val copy = budget :+ Revenue("Hotel", 100.0) :+ Revenue("Salary", 100.0) :+ Revenue("Hotel", 100.0) :- 1 
+	   val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) addRev Revenue("Hotel", 100.0) removeRev 1 
 	   copy.revenues.length should be(2)
 	   copy.revenues should contain(Revenue("Hotel", 100.0, false, 0))
 	   copy.revenues should contain(Revenue("Hotel", 100.0, false, 1))
@@ -57,26 +57,26 @@ class BudgetSpec extends FlatSpec with Matchers {
 
 
    "it" should "return one new copy of Budget without Revenue and reorganize the index" in {
-	   val copy = budget :+ Revenue("Hotel", 100.0) :+ Revenue("Salary", 100.0) :+ Revenue("Hotel", 100.0) :- 1
+	   val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) addRev Revenue("Hotel", 100.0) removeRev 1
 	   copy.revenues(0).index should be(0)
 	   copy.revenues(1).index should be(1)
    }
 
    
    "it" should "subtract the Revenues in balance of the Budget" in {
-	     val copy = budget :+ Revenue("Hotel", 100.0) :+ Revenue("Salary", 100.0) :+ Revenue("Hotel", 100.0) :- 1
+	     val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) addRev Revenue("Hotel", 100.0) removeRev 1
 			 copy.balance should be (200.0)
    }
   
    
    "it" should "ignore the remove of Revenues when Budget don't have it" in {
-	   val copy = budget :+ Revenue("Salary", 100.0) :- 0 :- 0
+	   val copy = budget addRev Revenue("Salary", 100.0) removeRev 0 removeRev 0
 	   copy.revenues.length should be(0)
    }
 
    
    "it" should "ignore the subtract of Revenues when Budget don't have it" in {
-	   val copy = budget :+ Revenue("Salary", 100.0) :- 0 :- 0
+	   val copy = budget addRev Revenue("Salary", 100.0) removeRev 0 removeRev 0
 	   copy.balance should be(0.0)
    }
 
