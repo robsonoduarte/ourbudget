@@ -26,7 +26,7 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
    )
   
   
-  def +(exp: Expenditure) = copy(balance = balance - exp.value,  expenditures = expenditures :+ _copy(exp) )
+  def ::+(exp: Expenditure) = copy(balance = balance - exp.value,  expenditures = expenditures :+ _copy(exp) )
   def -(exp: Expenditure) = copy(balance = ++(exp), expenditures = remove(exp))
   def +(user: User) = copy(users = users :+ user.id)
 
