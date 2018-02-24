@@ -61,7 +61,7 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 	});
 
 
-	$ionicModal.fromTemplateUrl('new-expenditure.html', {
+	$ionicModal.fromTemplateUrl('expenditure.html', {
 		scope: $scope,
 		animation: 'slide-in-up'
 	}).then(function(modal) {
@@ -84,6 +84,7 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 			$scope.budget = result
 			$ionicLoading.hide()
 			$scope.modalRevenue.hide()
+			$scope.modalExpenditure.hide()
 		})
 	}
 	
@@ -149,5 +150,27 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 				})
 			}
 	}
+	
+	
+	$scope.removeExpenditure = function(revenue) {
+		$http.delete('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+'/expenditures/'+revenue.index)
+		.success(function(result) {
+			$scope.budget = result
+			$ionicLoading.hide()
+			$scope.modalExpenditure.hide()
+		})	
+	}
+	
+	$scope.newExpenditure = function() {
+		$scope.expenditure = {}
+		$scope.modalExpenditure.show()
+	}
+	
+	$scope.editExpenditure = function(expenditure) {
+		$scope.expenditure = expenditure
+		$scope.modalExpenditure.show()
+	}
+	
+	
 });
 
