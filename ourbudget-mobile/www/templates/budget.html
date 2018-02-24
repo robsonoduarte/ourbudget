@@ -16,11 +16,11 @@
 	</ion-list>
 	<div class="item item-divider divider-title item-button-right" >
     	Despesas
-        <button class="button button-icon icon ion-ios-plus" ng-click="modalExpenditure.show()"></button>
+        <button class="button button-icon icon ion-ios-plus" ng-click="newExpenditure()"></button>
     </button>
   	</div>
 	<ion-list>
-	  <ion-item ng-repeat="expenditure in budget.expenditures">
+	  <ion-item ng-repeat="expenditure in budget.expenditures" ng-click="editExpenditure(expenditure)">
 	  <i class=" icon  ng-class: expenditure.liquidated ? 'balanced ion-checkmark-round' : 'energized ion-alert';"></i>
     	 {{expenditure.name}}
     	<span class="item-note assertive" >
@@ -44,8 +44,8 @@
   </script>
 
 
-   <script id="new-expenditure.html" type="text/ng-template">
-  	<div ng-include src="'templates/modal/new-expenditure.html'"></div>
+   <script id="expenditure.html" type="text/ng-template">
+  	<div ng-include src="'templates/modal/expenditure.html'"></div>
   </script>
 
 
