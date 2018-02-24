@@ -1,8 +1,10 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Nova Receita</h1>
-    <div class="buttons">
-      <button class="button button-icon ion-ios-close" ng-click="modalRevenue.hide()"></button>
+    <button class="button button-icon ion-arrow-left-c" ng-click="getBudget()"></button>
+    <h1 ng-if="revenue.index == undefined" class="title">Nova Receita</h1>
+    <h1 ng-if="revenue.index != undefined" class="title">Editar Receita</h1>
+    <div class="buttons">            	
+      <button class="button button-icon ion-trash-b" ng-click="removeRevenue(revenue)" ng-if="revenue.index != undefined"></button>
     </div>
   </ion-header-bar>
   <ion-content>
@@ -18,8 +20,8 @@
           <input type="number" ng-model="revenue.value" step=".01" placeholder="Valor" required data-parsley-required-message="Valor é Obrigatório" data-parsley-type-message="O valor deve conter apenas 2 digitos">
         </label>
 
-        <label class="item">
-          <button class="button button-block button-positive" ng-click="saveRevenue(revenue)">Salvar</button>
+        <label class="item" >
+          <button class="button button-block button-positive" ng-click="saveRevenue(revenue)" >Salvar</button>
         </label>
       </div>
      </form>
