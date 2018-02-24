@@ -93,5 +93,17 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
   }
 
   
+  
+  test("should delete the Expenditure in the Budget searching by id and index"){
+	  delete(s"/budgets/$id/expenditures/0"){       
+		  val budget = parse(body).extract[Budget]
+			budget.expenditures.length should be(0)
+	  }
+  }
+  
+  
+  
+  
+  
    
 }
