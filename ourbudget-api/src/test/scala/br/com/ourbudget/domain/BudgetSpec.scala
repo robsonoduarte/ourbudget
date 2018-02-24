@@ -12,7 +12,7 @@ class BudgetSpec extends FlatSpec with Matchers {
  val budget = Budget(name = "Travel")
 
 
- // REVENUES TESTS TO :+ METHOD
+ // REVENUES TESTS TO addRev METHOD
 
  "it" should "return one new copy of Budget when add new Revenue" in {
      val copy = budget addRev Revenue("Salary", 100.0)
@@ -88,7 +88,7 @@ class BudgetSpec extends FlatSpec with Matchers {
 
 
 
-   // EXPENDITURE + METHOD TESTS
+   // EXPENDITURE addExp METHOD TESTS
 
    "it" should "return one new copy of Budget when add new Expenditure" in {
 	val copy = budget addExp Expenditure("Hotel", 100.0, "Travel")
@@ -118,37 +118,47 @@ class BudgetSpec extends FlatSpec with Matchers {
 
 
   
-     // EXPENDITURE TESTS TO - METHOD
+     // EXPENDITURE TESTS TO removeExp METHOD
 
-/*   "it" should "return one new copy of Budget when remove one Expenditure" in {
-	    val copy = budget - Expenditure("Hotel", 100.0, "Travel")
+  "it" should "return one new copy of Budget when remove one Expenditure" in {
+	    val copy = budget removeExp 0
 	    copy should not be theSameInstanceAs(budget)
     }
 
-	
+  
+ 	
    "it" should "return one new copy of Budget without Expenditure when remove the Expenditure" in {
-	   val copy = budget + Expenditure("Hotel", 100.0, "Travel") + Expenditure("Car", 100.0, "Travel") + Expenditure("Restaurant", 100.0, "Travel") - Expenditure("Car", 100.0,"Travel", false , 1) // need pass complete object to remove
+	   val copy = budget addExp Expenditure("Hotel", 100.0, "Travel") addExp Expenditure("Car", 100.0, "Travel") addExp Expenditure("Restaurant", 100.0, "Travel") removeExp 1
 	   copy.expenditures.length should be(2)
 	   copy.expenditures should contain(Expenditure("Hotel", 100.0, "Travel", false, 0))
 	   copy.expenditures should contain(Expenditure("Restaurant", 100.0, "Travel", false, 1))
 	   copy.expenditures should not contain(Expenditure("Car", 100.0, "Travel", false, 1))
    }
    
-  
-    "it" should "remove the Expenditure in balance of the Budget" in {
-	   val copy = budget :+ Revenue("Salary", 400.0) + Expenditure("Hotel", 100.0, "Travel") + Expenditure("Hotel", 100.0, "Travel") - Expenditure("Hotel", 100.0, "Travel", false, 1)
-	   copy.balance should be (300.0)
+   
+    "it" should "return one new copy of Budget without Expenditure and reorganize the index" in {
+	   val copy = budget addExp Expenditure("Hotel", 100.0, "Travel") addExp Expenditure("Airplane", 100.0, "Travel") addExp Expenditure("Carr", 100.0, "Travel") removeExp 1
+	   copy.expenditures(0).index should be(0)
+	   copy.expenditures(1).index should be(1)
    }
    
-   
-   
+  
+    "it" should "add de value of Expenditure in balance of the Budget" in {
+	   val copy = budget addRev Revenue("Salary", 400.0) addExp Expenditure("Hotel", 100.0, "Travel") addExp Expenditure("Hotel", 100.0, "Travel") removeExp 1
+	   copy.balance should be (300.0)
+   }
+  
+    
+    
 
    "it" should "ignore the remove of Expenditure when Budget don't have it" in {
-	   val copy = budget :+ Revenue("Salary", 100.0) + Expenditure("Hotel", 100.0, "Travel") - Expenditure("Hotel", 100.0, "Travel", false, 0) - Expenditure("Hotel", 100.0, "Travel", false, 0)
+	   val copy = budget addRev Revenue("Salary", 100.0) addExp Expenditure("Hotel", 100.0, "Travel") removeExp 0 removeExp 0
 	   copy.expenditures.length should be(0)
 	   copy.balance should be(100.0)
-   }*/
+   }
 
+   
+   
    
    
 
