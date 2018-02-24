@@ -2,11 +2,11 @@
   <ion-content>
   	<div class="item item-divider divider-title item-button-right ">
     	Receitas
-        <button class="button button-icon icon ion-ios-plus" ng-click="modalRevenue.show()"></button>
+        <button class="button button-icon icon ion-ios-plus" ng-click="newRevenue()"></button>
     </button>
   	</div>
     <ion-list>
-	  <ion-item ng-repeat="revenue in budget.revenues" >
+	  <ion-item ng-repeat="revenue in budget.revenues" ng-click="editRevenue(revenue)">
 	   <i class=" icon  ng-class: revenue.received ? 'balanced ion-checkmark-round' : 'energized ion-alert';"></i>
     	 {{revenue.name}}
     	 <span class="item-note positive">
@@ -39,8 +39,8 @@
   </ion-content>
 
 
-   <script id="new-revenue.html" type="text/ng-template">
-  	<div ng-include src="'templates/modal/new-revenue.html'"></div>
+   <script id="revenue.html" type="text/ng-template">
+  	<div ng-include src="'templates/modal/revenue.html'"></div>
   </script>
 
 
