@@ -20,7 +20,7 @@ buildscript{
     }
 }
 
-mainClassName = "br.com.ourbudget.api.OurBudgetLauncher"
+mainClassName = "br.com.ourbudget.launcher.OurBudgetLauncher"
 
 
 repositories{
@@ -71,5 +71,5 @@ applicationDefaultJvmArgs = [
 	"-Dcom.sun.management.jmxremote.rmi.port=1099",
 	"-Dcom.sun.management.jmxremote.authenticate=false",
 	"-Dcom.sun.management.jmxremote.ssl=false",
-	"-Djava.rmi.server.hostname=34.238.24.150"
+	"-Djava.rmi.server.hostname=127.0.0.1"
 ]
