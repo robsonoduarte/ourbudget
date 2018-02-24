@@ -24,12 +24,12 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
     contentType = formats("json")
   }
 
-  //options("/*"){
-   // response.setHeader(
-     // "Access-Control-Allow-Headers", 
-     // request.getHeader("Access-Control-Request-Headers")
-     //);
- // }
+  options("/*"){
+   response.setHeader(
+      "Access-Control-Allow-Headers", 
+      request.getHeader("Access-Control-Request-Headers")
+     );
+  }
 
 
   post("/budgets") {
@@ -58,10 +58,10 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
   
   
   delete("/budgets/:id/revenues/:index") {	  
-	  val budget = findBudget :- params("index").toInt
-		save(budget)
-		//  notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
-		budget
+    val budget = findBudget :- params("index").toInt
+    save(budget)
+    //  notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
+    budget
   }
 
   
