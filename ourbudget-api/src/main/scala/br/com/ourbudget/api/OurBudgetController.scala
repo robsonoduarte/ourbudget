@@ -58,10 +58,10 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
   
   
   delete("/budgets/:id/revenues/:index") {	  
-	  val budget = findBudget :- params("index").toInt
-		save(budget)
-		//  notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
-		budget
+    val budget = findBudget :- params("index").toInt
+    save(budget)
+    //  notificator notify(s"""{"name":"${budget.name}", "revenue": "${revenue.name}"}""")
+    budget
   }
 
   
