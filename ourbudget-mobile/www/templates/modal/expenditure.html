@@ -1,8 +1,10 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Nova Despesa</h1>
+        <button class="button button-icon ion-arrow-left-c" ng-click="getBudget()"></button>
+    <h1 ng-if="expenditure.index == undefined" class="title">Nova Despesa </h1>
+    <h1 ng-if="expenditure.index != undefined" class="title">Editar Despesa</h1>
     <div class="buttons">
-      <button class="button button-icon ion-ios-close" ng-click="modalExpenditure.hide()"></button>
+      <button class="button button-icon ion-trash-b" ng-click="removeExpenditure(expenditure)" ng-if="expenditure.index != undefined"></button>
     </div>
   </ion-header-bar>
   <ion-content>
