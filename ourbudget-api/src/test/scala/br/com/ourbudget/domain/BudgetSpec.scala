@@ -91,19 +91,19 @@ class BudgetSpec extends FlatSpec with Matchers {
    // EXPENDITURE + METHOD TESTS
 
    "it" should "return one new copy of Budget when add new Expenditure" in {
-	val copy = budget ::+ Expenditure("Hotel", 100.0, "Travel")
+	val copy = budget addExp Expenditure("Hotel", 100.0, "Travel")
 	copy should not be theSameInstanceAs(budget)
    }
 
 
    "it" should "return one new copy of Budget with new Expenditure in List of Expenditures " in {
-	   val copy = budget ::+ Expenditure("Hotel", 100.0, "Travel")
+	   val copy = budget addExp Expenditure("Hotel", 100.0, "Travel")
 	   copy.expenditures should have length 1
    }
 
 
    "it" should "return one new copy of Budget with the new Expenditure with index" in {
-	   val copy = budget ::+ Expenditure("Hotel", 100.0, "Travel") ::+ Expenditure("Airplane", 100.0, "Travel")
+	   val copy = budget addExp Expenditure("Hotel", 100.0, "Travel") addExp Expenditure("Airplane", 100.0, "Travel")
 	   copy.expenditures(0).index should be(0)
 	   copy.expenditures(1).index should be(1)
    }
@@ -111,7 +111,7 @@ class BudgetSpec extends FlatSpec with Matchers {
 
 
   "it" should "subtracting the Expenditure in balance of the Budget" in {
-	   val copy = budget ::+ Expenditure("Hotel", 100.0, "Travel" ) ::+ Expenditure("Airplane", 100.0, "Travel")
+	   val copy = budget addExp Expenditure("Hotel", 100.0, "Travel" ) addExp Expenditure("Airplane", 100.0, "Travel")
 	   copy.balance should be (-200.0)
    }
 
