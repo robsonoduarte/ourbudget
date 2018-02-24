@@ -1,4 +1,4 @@
-package br.com.ourbudget.api
+package br.com.ourbudget.launcher
 
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
