@@ -106,6 +106,14 @@ class BudgetSpec extends FlatSpec with Matchers {
    }
   
   
+   "it" should "ignore the update of Revenues when Budget don't have it" in {
+	   val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 2) // the index 2
+	   copy.revenues.length should be(2)
+   }
+   
+   
+   
+   
 
    // EXPENDITURE addExp METHOD TESTS
 
