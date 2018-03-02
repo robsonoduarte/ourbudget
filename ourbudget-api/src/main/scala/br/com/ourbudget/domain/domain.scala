@@ -51,7 +51,14 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
    )
   
    
+  def updateRev(rev: Revenue) = {
+		copy()  
+	}
+   
+	
+	
   def +(user: User) = copy(users = users :+ user.id)
+
  
 }
 
