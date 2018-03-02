@@ -95,8 +95,8 @@ class BudgetSpec extends FlatSpec with Matchers {
   
   "it" should "return one new copy of Budget with Revenue updated" in {
 	  val copy = budget addRev Revenue("Hotel", 100.0) updateRev Revenue("Hotel", 200.0, false , 0) // pass full object   
-			  copy.revenues.length should be(1)
-			  copy.revenues should contain(Revenue("Hotel", 200.0, false, 0))
+		copy.revenues.length should be(1)
+		copy.revenues should contain(Revenue("Hotel", 200.0, false, 0))
   }
 
 
@@ -105,8 +105,8 @@ class BudgetSpec extends FlatSpec with Matchers {
    // EXPENDITURE addExp METHOD TESTS
 
    "it" should "return one new copy of Budget when add new Expenditure" in {
-	val copy = budget addExp Expenditure("Hotel", 100.0, "Travel")
-	copy should not be theSameInstanceAs(budget)
+	    val copy = budget addExp Expenditure("Hotel", 100.0, "Travel")
+	    copy should not be theSameInstanceAs(budget)
    }
 
 
