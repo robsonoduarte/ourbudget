@@ -100,6 +100,11 @@ class BudgetSpec extends FlatSpec with Matchers {
   }
 
 
+   "it" should "update the balance of the Budget when update the Revenue" in {
+	     val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 0) 
+			 copy.balance should be (300.0)
+   }
+  
   
 
    // EXPENDITURE addExp METHOD TESTS
