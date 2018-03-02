@@ -52,7 +52,14 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
   
    
   def updateRev(rev: Revenue) = {
-		copy( revenues = revenues.updated(rev.index, rev) )  
+		copy( 
+		     balance = { 
+		         balance - revenues(rev.index).value + rev.value 
+		       }, 
+		    revenues = {
+		         revenues.updated(rev.index, rev) 
+		       }
+		   )  
 	}
    
 	
