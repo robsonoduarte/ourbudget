@@ -89,8 +89,6 @@ class BudgetSpec extends FlatSpec with Matchers {
      val copy = budget addRev Revenue("Salary", 100.0) updateRev Revenue("Salary", 200.0)
      copy should not be theSameInstanceAs(budget)
   }
-
-
   
   
   "it" should "return one new copy of Budget with Revenue updated" in {
@@ -112,7 +110,10 @@ class BudgetSpec extends FlatSpec with Matchers {
    }
    
    
-   
+   "it" should "ignore the update the balance Budget whe it  don't have the Revenue" in {
+	   val copy = budget addRev Revenue("Salary", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 2) // the index 2
+	   copy.balance should be(200.0)
+   }   
    
 
    // EXPENDITURE addExp METHOD TESTS
