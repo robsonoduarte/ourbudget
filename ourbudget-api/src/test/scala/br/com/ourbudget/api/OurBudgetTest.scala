@@ -11,8 +11,9 @@ import br.com.ourbudget.domain.Expenditure
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
 import java.sql.Date
+import org.scalatest.Sequential
 
-class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
+class OurBudgetControlleTests extends Sequential with ScalatraSuite with FunSuiteLike  {
 
   var id : String = null
 
@@ -22,6 +23,8 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
   addServlet(classOf[OurBudgetController], "/*")
 
 
+  
+  // BUDGET
 
   val budget = """{"name": "API TEST", "users":  ["123"]}""""
 
@@ -59,13 +62,25 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
   }
   
 
-
+  
+  // REVENUE
+  
   var revenue = """{ "name": "Salary", "value": 400 }"""
   test("should add the Revenue in the Budget searching by id"){
      post(s"/budgets/$id/revenues", revenue ){       
         val budget = parse(body).extract[Budget]
-        budget.revenues should contain (Revenue("Salary", 400))
+        budget.revenues.length should be(1)
      }
+  }
+  
+  
+  
+    revenue = """{ "name": "Salary 2", "value": 300, "received": true, "index": 0 }"""
+	  test("should update the Revenue in the Budget searching by id"){
+  	  put(s"/budgets/$id/revenues", revenue ){       
+  		  val budget = parse(body).extract[Budget]
+  			budget.revenues should contain (Revenue("Salary 2", 300, true, 0))
+  	  }
   }
   
   
@@ -77,9 +92,11 @@ class OurBudgetControlleTests extends ScalatraSuite with FunSuiteLike {
   }
   
   
-  	
+  
+  
 	
-
+  // EXPENDITURE
+  
   val expenditure = """{ "name": "Hotel", "value": 200 , "category" : "travel" , "liquidated" : true}"""
 
   test("should add the Expenditure in the Budget searching by id"){
