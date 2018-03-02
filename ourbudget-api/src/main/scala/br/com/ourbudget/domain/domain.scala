@@ -26,7 +26,7 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
 				  try {          
 					  balance + expenditures(index).value
 				  } catch {
-				  case t: IndexOutOfBoundsException => balance
+				    case t: IndexOutOfBoundsException => balance
 				  }        
 		  },                
       expenditures = {       
@@ -54,10 +54,18 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
   def updateRev(rev: Revenue) = {
 		copy( 
 		     balance = { 
-		         balance - revenues(rev.index).value + rev.value 
-		       }, 
+		       try{
+		    	   balance - revenues(rev.index).value + rev.value 		         
+		       }catch{
+		         case t: IndexOutOfBoundsException => balance		         
+		       }
+		     }, 
 		    revenues = {
-		         revenues.updated(rev.index, rev) 
+		         try{
+		        	 revenues.updated(rev.index, rev) 		          
+		         }catch{
+  		         case t: IndexOutOfBoundsException => revenues		         		           
+		         }
 		       }
 		   )  
 	}
