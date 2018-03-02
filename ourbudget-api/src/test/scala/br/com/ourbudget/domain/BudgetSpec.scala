@@ -94,9 +94,9 @@ class BudgetSpec extends FlatSpec with Matchers {
   
   
   "it" should "return one new copy of Budget with Revenue updated" in {
-	  val copy = budget addRev Revenue("Hotel", 100.0) updateRev Revenue("Hotel", 200.0, false , 0) // pass full object   
+	  val copy = budget addRev Revenue("Hotel", 100.0) updateRev Revenue("Hotel 2", 200.0, true , 0) // pass full object   
 		copy.revenues.length should be(1)
-		copy.revenues should contain(Revenue("Hotel", 200.0, false, 0))
+		copy.revenues should contain(Revenue("Hotel 2", 200.0, true, 0))
   }
 
 
