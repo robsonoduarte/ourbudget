@@ -81,8 +81,14 @@ class BudgetSpec extends FlatSpec with Matchers {
    }
 
 
+   
+   // REVENUES TESTS TO updateRev METHOD
 
 
+  "it" should "return one new copy of Budget when update the Revenue" in {
+     val copy = budget addRev Revenue("Salary", 100.0) updateRev Revenue("Salary", 200.0)
+     copy should not be theSameInstanceAs(budget)
+  }
 
 
 
