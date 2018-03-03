@@ -99,14 +99,18 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 		var valid = $('#form-revenue').parsley().validate()
 		
 		if(valid){
-			$ionicLoading.show()
-			$http.post('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+'/revenues', revenue)
-			.success(function(result) {
-				$scope.budget = result
-				$ionicLoading.hide()
-				$scope.modalRevenue.hide()
-				$scope.revenue = {}
-			})			
+			$ionicLoading.show()			
+			if(revenue.index === undefined){				
+				$http.post('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+'/revenues', revenue)
+				.success(function(result) {
+					successRevenue(result)
+				})
+			}else{				
+				$http.put('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+'/revenues', revenue)
+				.success(function(result) {
+					successRevenue(result)
+				})
+			}
 		}
 	}
 	
@@ -130,7 +134,12 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 	}
 	
 
-		
+	function successRevenue(result){
+		$scope.budget = result
+		$ionicLoading.hide()
+		$scope.modalRevenue.hide()
+		$scope.revenue = {}
+	}
 	
 	
 	
