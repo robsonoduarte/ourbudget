@@ -44,8 +44,6 @@ app.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http
 })
 
 
-
-
 app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
 
 	$ionicModal.fromTemplateUrl('revenue.html', {
