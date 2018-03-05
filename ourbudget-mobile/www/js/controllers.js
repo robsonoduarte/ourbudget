@@ -179,7 +179,5 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 		$scope.expenditure = expenditure
 		$scope.modalExpenditure.show()
 	}
-	
-	
 });
 
