@@ -143,8 +143,7 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 	
 	
 	
-	// EXPENDITURES
-	
+	// EXPENDITURES	
 	$scope.saveExpenditure = function(expenditure) {
 		
 			var valid = $('#form-expenditure').parsley().validate()
