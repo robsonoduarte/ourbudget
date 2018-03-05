@@ -19,7 +19,6 @@ app.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http
 
 	$ionicLoading.show()
 
-
   	$http.get('http://127.0.0.1:8080/ourbudget/api/v1/budgets')
   		.success(function(result){
   			$scope.budgets = result;
@@ -40,8 +39,7 @@ app.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http
 						users: ['581b5368e4700fab384fc1c3']
 					}
 			})
-		}		
-		 
+		}
 	 }
 })
 
