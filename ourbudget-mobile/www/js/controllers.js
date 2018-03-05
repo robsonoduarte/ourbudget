@@ -128,14 +128,12 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 		$scope.modalRevenue.show()
 	}
 	
-
 	function successRevenue(result){
 		$scope.budget = result
 		$ionicLoading.hide()
 		$scope.modalRevenue.hide()
 		$scope.revenue = {}
 	}
-	
 	
 	
 	// EXPENDITURES
