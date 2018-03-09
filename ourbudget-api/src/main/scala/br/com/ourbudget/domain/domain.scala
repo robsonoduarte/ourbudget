@@ -81,6 +81,3 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
 case class User(id: String = "", name: String = "", budgets: Array[String] = Array()){
   def +(budget: Budget) = copy(budgets = budgets :+ budget.id)
 }
-
-
-
