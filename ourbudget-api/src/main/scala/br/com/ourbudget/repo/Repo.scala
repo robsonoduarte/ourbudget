@@ -19,6 +19,7 @@ class Repo {
   def list[B](c: Class[B]): List[B] = mongo.findAll(c).toList
   def listToUser(id: String) = mongo.find(new Query(where("users").in(id)), classOf[Budget]).toList
 
+  
 }
 
 
