@@ -20,4 +20,5 @@ object OurBudgetLauncher extends App {
 
     server.start
     server.join
+    
 }
