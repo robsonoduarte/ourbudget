@@ -11,7 +11,6 @@ class Notificator {
 	private val api_key = ""
 
 
-
 // TODO: get object message
   def notify(msg: String) = {
 
