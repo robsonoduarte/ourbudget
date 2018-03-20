@@ -6,7 +6,6 @@ import scala.collection.mutable.ArrayBuffer
 case class Revenue(name: String, value: Double, received: Boolean = false, index: Int = 0)
 case class Expenditure(name: String, value: Double, category: String, liquidated: Boolean = false, index: Int = 0)
 
-
 // TODO: Study some way to allow create the Budget only with name...
 case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed: Boolean = false, revenues: Array[Revenue] = Array(), expenditures: Array[Expenditure] = Array(), users : Array[String] = Array()){
   
