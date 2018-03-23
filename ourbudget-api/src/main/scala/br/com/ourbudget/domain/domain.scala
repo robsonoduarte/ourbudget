@@ -2,7 +2,6 @@ package br.com.ourbudget.domain
 
 import scala.collection.mutable.ArrayBuffer
 
-
 case class Revenue(name: String, value: Double, received: Boolean = false, index: Int = 0)
 case class Expenditure(name: String, value: Double, category: String, liquidated: Boolean = false, index: Int = 0)
 
