@@ -4,7 +4,6 @@ import scalaj.http.Http
 
 
 
-
 class Notificator {
 
 	private val app_id = ""
