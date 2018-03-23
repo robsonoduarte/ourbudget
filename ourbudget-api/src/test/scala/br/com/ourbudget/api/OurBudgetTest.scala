@@ -22,7 +22,6 @@ class OurBudgetControlleTests extends Sequential with ScalatraSuite with FunSuit
 
   addServlet(classOf[OurBudgetController], "/*")
 
-
   
   // BUDGET
 
