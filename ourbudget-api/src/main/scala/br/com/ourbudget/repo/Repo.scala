@@ -11,7 +11,6 @@ import br.com.ourbudget.domain.Budget
 
 class Repo {
 
-
   private val mongo = MongoTemplateBuffer.get
 
   def save[B](b: B) = mongo save(b)
