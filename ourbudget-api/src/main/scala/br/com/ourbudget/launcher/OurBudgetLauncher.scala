@@ -5,6 +5,7 @@ import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
 import org.eclipse.jetty.webapp.WebAppContext
 import org.scalatra.servlet.ScalatraListener
 
+
 object OurBudgetLauncher extends App {
 
    val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
