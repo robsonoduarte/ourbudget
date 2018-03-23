@@ -11,8 +11,6 @@ import br.com.ourbudget.domain.Expenditure
 import br.com.ourbudget.repo.Repo
 import br.com.ourbudget.service.Notificator
 
-
-
 class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
 
   protected implicit lazy val jsonFormats: Formats = DefaultFormats
