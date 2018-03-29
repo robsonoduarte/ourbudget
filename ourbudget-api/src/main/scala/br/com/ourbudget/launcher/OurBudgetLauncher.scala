@@ -20,6 +20,5 @@ object OurBudgetLauncher extends App {
     server.setHandler(context)
 
     server.start
-    server.join
-    
+    server.join    
 }
