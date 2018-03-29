@@ -6,7 +6,6 @@ class BudgetService {
   def save(budget: Budget): Budget = null
 }
 
-
 object BudgetService{
   def apply() = new BudgetService()
 }
