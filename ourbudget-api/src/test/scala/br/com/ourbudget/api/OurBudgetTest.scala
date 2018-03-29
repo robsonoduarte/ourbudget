@@ -118,8 +118,5 @@ class OurBudgetControlleTests extends Sequential with ScalatraSuite with FunSuit
   }
   
   
-  
-  
-  
    
 }
