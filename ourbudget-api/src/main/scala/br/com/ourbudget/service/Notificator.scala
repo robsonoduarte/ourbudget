@@ -37,6 +37,7 @@ class Notificator {
 
 }
 
+
 object Notificator {
   def apply() = new Notificator()
 }
