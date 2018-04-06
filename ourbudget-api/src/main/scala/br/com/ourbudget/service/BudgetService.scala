@@ -9,3 +9,4 @@ class BudgetService {
 object BudgetService{
   def apply() = new BudgetService()
 }
+
