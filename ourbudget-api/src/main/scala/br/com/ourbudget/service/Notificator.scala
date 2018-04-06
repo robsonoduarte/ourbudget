@@ -3,7 +3,6 @@ package br.com.ourbudget.service
 import scalaj.http.Http
 
 
-
 class Notificator {
 
 	private val app_id = ""
