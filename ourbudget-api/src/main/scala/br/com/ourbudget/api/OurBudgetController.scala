@@ -116,7 +116,6 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
   
   
   
-  
   private def save[B](b: B) = repo save (b)
   private def findBudget = repo find (params("id"), classOf[Budget])
 
