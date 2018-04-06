@@ -7,6 +7,7 @@ class ScalatraBootstrap extends LifeCycle {
   override def init(context: ServletContext){
     context mount(new OurBudgetController, "/ourbudget/api/v1/*", "ourbudget")
   }
+  
 }
 
 
