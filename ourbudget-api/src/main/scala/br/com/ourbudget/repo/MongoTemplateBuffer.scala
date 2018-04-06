@@ -13,5 +13,4 @@ object MongoTemplateBuffer {
      
     def get = mongoTemplate
   
- 
 }
