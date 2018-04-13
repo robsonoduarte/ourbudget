@@ -197,11 +197,11 @@ class BudgetSpec extends FlatSpec with Matchers {
   }
   
   
-/*  "it" should "return one new copy of Budget with Expenditure updated" in {
+  "it" should "return one new copy of Budget with Expenditure updated" in {
 	  val copy = budget addExp Expenditure("Hotel", 100.0, "Travel") updateExp Expenditure("Hotel", 200.0, "Travel", false, 0)  // full object  
 		copy.expenditures.length should be(1)
 		copy.expenditures should contain(Expenditure("Hotel", 200.0, "Travel", false, 0))
-  }*/
+  }
 
   /*
 
