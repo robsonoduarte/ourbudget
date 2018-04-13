@@ -1,6 +1,7 @@
 package br.com.ourbudget.domain
 
 import scala.collection.mutable.ArrayBuffer
+import scala.reflect.api.Exprs
 
 case class Revenue(name: String, value: Double, received: Boolean = false, index: Int = 0)
 case class Expenditure(name: String, value: Double, category: String, liquidated: Boolean = false, index: Int = 0)
@@ -48,6 +49,10 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
       }
    )
   
+   
+   def updateExp(exp: Expenditure) ={
+	    copy()
+	 }
    
   def updateRev(rev: Revenue) = {
 		copy( 
