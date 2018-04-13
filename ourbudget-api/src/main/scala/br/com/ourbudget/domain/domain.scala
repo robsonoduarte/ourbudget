@@ -51,7 +51,10 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
   
    
    def updateExp(exp: Expenditure) ={
-	    copy(
+	    copy(	        
+	        balance = {
+	          balance + expenditures(exp.index).value - exp.value
+	        },
 	        expenditures = {
 	          expenditures.updated(exp.index, exp)
 	        }
