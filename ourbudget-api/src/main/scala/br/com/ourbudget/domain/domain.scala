@@ -51,12 +51,20 @@ case class Budget(id : String = "", name: String, balance: Double = 0.0,  closed
   
    
    def updateExp(exp: Expenditure) ={
-	    copy(	        
+	    copy(
 	        balance = {
-	          balance + expenditures(exp.index).value - exp.value
+	          try{
+	            balance + expenditures(exp.index).value - exp.value
+	          }catch{
+		         case t: IndexOutOfBoundsException => balance		         
+		       }
 	        },
 	        expenditures = {
-	          expenditures.updated(exp.index, exp)
+	          try{
+	        	  expenditures.updated(exp.index, exp)	            
+	          }catch{
+		         case t: IndexOutOfBoundsException => expenditures		         
+		       }
 	        }
 	       )
 	 }
