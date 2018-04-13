@@ -93,6 +93,15 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
     save(budget)
     budget
   }
+  
+  
+  put("/budgets/:id/expenditures") {
+	  val expenditure = parsedBody.extract[Expenditure]
+		val budget = findBudget updateExp expenditure
+			  //   notificator notify(s"""{"name":"${budget.name}", "expenditure": "${expenditure.name}"}""")
+    save(budget)
+		budget
+  }
 
 
   
