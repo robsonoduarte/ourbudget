@@ -203,13 +203,14 @@ class BudgetSpec extends FlatSpec with Matchers {
 		copy.expenditures should contain(Expenditure("Hotel", 200.0, "Travel", false, 0))
   }
 
-  /*
-
-   "it" should "update the balance of the Budget when update the Revenue" in {
-	     val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 0) 
-			 copy.balance should be (300.0)
-   }
   
+
+   "it" should "update the balance of the Budget when update the Expenditure" in {
+	     val copy = budget addExp Expenditure("Hotel", 100.0, "Travel") updateExp Expenditure("Hotel", 50.0, "Travel", false, 0)  // full object 
+			 copy.balance should be (-50.0)
+   }
+   
+  /*
   
    "it" should "ignore the update of Revenues when Budget don't have it" in {
 	   val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 2) // the index 2
