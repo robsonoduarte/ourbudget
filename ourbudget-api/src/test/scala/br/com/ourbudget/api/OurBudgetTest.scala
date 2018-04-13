@@ -96,16 +96,22 @@ class OurBudgetControlleTests extends Sequential with ScalatraSuite with FunSuit
 	
   // EXPENDITURE
   
-  val expenditure = """{ "name": "Hotel", "value": 200 , "category" : "travel" , "liquidated" : true}"""
+  var expenditure = """{ "name": "Hotel", "value": 200 , "category" : "travel" , "liquidated" : true}"""
 
   test("should add the Expenditure in the Budget searching by id"){
      post(s"/budgets/$id/expenditures", expenditure ){
-        val ex = parse(body).extract[Budget].expenditures(0)
-        ex.name should be ("Hotel")
-        ex.value should be (200.0)
-        ex.liquidated should be (true)
-        ex.category should be ("travel")
+        val budget = parse(body).extract[Budget]
+        budget.expenditures.length should be(1)
      }
+  }
+ 
+  
+  expenditure = """{ "name": "Hotel", "value": 300 , "category" : "travel" , "liquidated" : true, "index": 0}"""		  
+	test("should update the Expenditure in the Budget searching by id"){
+	  put(s"/budgets/$id/expenditures", expenditure ){
+		  val budget = parse(body).extract[Budget]
+		  budget.expenditures should contain(Expenditure("Hotel", 300.0, "travel", true, 0))
+	  }
   }
 
   
