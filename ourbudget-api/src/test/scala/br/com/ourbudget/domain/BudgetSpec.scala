@@ -188,6 +188,40 @@ class BudgetSpec extends FlatSpec with Matchers {
    
    
    
+      // REVENUES TESTS TO updateRev METHOD
+
+
+  "it" should "return one new copy of Budget when update the Expenditure" in {
+     val copy = budget addExp Expenditure("Hotel", 100.0, "Travel") updateExp Expenditure("Hotel", 100.0, "Travel")
+     copy should not be theSameInstanceAs(budget)
+  }
+  
+  
+/*  "it" should "return one new copy of Budget with Expenditure updated" in {
+	  val copy = budget addExp Expenditure("Hotel", 100.0, "Travel") updateExp Expenditure("Hotel", 200.0, "Travel", false, 0)  // full object  
+		copy.expenditures.length should be(1)
+		copy.expenditures should contain(Expenditure("Hotel", 200.0, "Travel", false, 0))
+  }*/
+
+  /*
+
+   "it" should "update the balance of the Budget when update the Revenue" in {
+	     val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 0) 
+			 copy.balance should be (300.0)
+   }
+  
+  
+   "it" should "ignore the update of Revenues when Budget don't have it" in {
+	   val copy = budget addRev Revenue("Hotel", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 2) // the index 2
+	   copy.revenues.length should be(2)
+   }
+   
+   
+   "it" should "ignore the update the balance Budget whe it  don't have the Revenue" in {
+	   val copy = budget addRev Revenue("Salary", 100.0) addRev Revenue("Salary", 100.0) updateRev Revenue("Hotel", 200.0, false , 2) // the index 2
+	   copy.balance should be(200.0)
+   }   */
+   
    
 
 
