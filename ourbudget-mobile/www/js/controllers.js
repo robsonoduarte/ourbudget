@@ -134,8 +134,7 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 	}
 	
 	
-	// EXPENDITURES
-	
+	// EXPENDITURES	
 	$scope.saveExpenditure = function(expenditure) {
 		
 			var valid = $('#form-expenditure').parsley().validate()
@@ -164,7 +163,7 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 			$scope.budget = result
 			$ionicLoading.hide()
 			$scope.modalExpenditure.hide()
-		})	
+		})
 	}
 	
 	$scope.newExpenditure = function() {
@@ -176,7 +175,6 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 		$scope.expenditure = expenditure
 		$scope.modalExpenditure.show()
 	}
-	
 	
 	function successExpenditure(result){
 		$scope.budget = result
