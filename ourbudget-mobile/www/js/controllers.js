@@ -140,14 +140,20 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 		
 			var valid = $('#form-expenditure').parsley().validate()
 			
-			if(valid){				
+			if(valid){
 				$ionicLoading.show()
-				$http.post('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+ '/expenditures', expenditure)
-				.success(function(result) {
-					$scope.budget = result
-					$ionicLoading.hide()
-					$scope.modalExpenditure.hide()
-				})
+				if(expenditure.index === undefined){
+					$http.post('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+ '/expenditures', expenditure)
+					.success(function(result) {
+						successExpenditure(result)
+					})
+					
+				}else{
+					$http.put('http://127.0.0.1:8080/ourbudget/api/v1/budgets/'+$stateParams.id+'/expenditures', expenditure)
+					.success(function(result) {
+						successExpenditure(result)
+					})
+				}	
 			}
 	}
 	
@@ -169,6 +175,14 @@ app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $state
 	$scope.editExpenditure = function(expenditure) {
 		$scope.expenditure = expenditure
 		$scope.modalExpenditure.show()
+	}
+	
+	
+	function successExpenditure(result){
+		$scope.budget = result
+		$ionicLoading.hide()
+		$scope.modalExpenditure.hide()
+		$scope.expenditure = {}
 	}
 	
 });
