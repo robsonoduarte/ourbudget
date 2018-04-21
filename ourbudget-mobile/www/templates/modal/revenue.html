@@ -19,6 +19,8 @@
           <span class="input-label">Valor</span>
           <input type="number" ng-model="revenue.value" step=".01" placeholder="Valor" required data-parsley-required-message="Valor é Obrigatório" data-parsley-type-message="O valor deve conter apenas 2 digitos">
         </label>
+                
+         <ion-checkbox name="received" ng-model="revenue.received">Recebido</ion-checkbox>
 
         <label class="item" >
           <button class="button button-block button-positive" ng-click="saveRevenue(revenue)" >Salvar</button>
