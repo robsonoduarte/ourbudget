@@ -27,6 +27,7 @@
           <input type="text" ng-model="expenditure.category" required placeholder="Categoria" data-parsley-required-message="Categoria é Obrigatório">
         </label>
 
+		<ion-checkbox name="liquidated" ng-model="expenditure.liquidated">Liquidada</ion-checkbox>
 
         <label class="item">
           <button class="button button-block button-positive" ng-click="saveExpenditure(expenditure)">Salvar</button>
