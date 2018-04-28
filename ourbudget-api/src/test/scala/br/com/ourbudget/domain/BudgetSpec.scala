@@ -11,7 +11,6 @@ class BudgetSpec extends FlatSpec with Matchers {
 
  val budget = Budget(name = "Travel")
 
-
  // REVENUES TESTS TO addRev METHOD
 
  "it" should "return one new copy of Budget when add new Revenue" in {
