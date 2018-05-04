@@ -4,10 +4,7 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 
 
-
-
 class BudgetSpec extends FlatSpec with Matchers {
-
 
  val budget = Budget(name = "Travel")
 
