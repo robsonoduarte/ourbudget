@@ -122,7 +122,5 @@ class OurBudgetControlleTests extends Sequential with ScalatraSuite with FunSuit
 			budget.expenditures.length should be(0)
 	  }
   }
-  
-  
    
 }
