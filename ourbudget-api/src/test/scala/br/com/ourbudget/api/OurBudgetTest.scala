@@ -52,7 +52,6 @@ class OurBudgetControlleTests extends Sequential with ScalatraSuite with FunSuit
 	  }
   } 
   
-  
   test("should get all Budgets in base"){ // FIXME: the simple get method to test the first integration with App mobile
      get("/budgets"){
        val budgets =  parse(body).extract[List[Budget]]
