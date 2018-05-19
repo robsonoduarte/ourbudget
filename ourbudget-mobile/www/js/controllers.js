@@ -4,12 +4,12 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {})
 
 
 app.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http){
-
+	
 	$scope.budget = {
 			name: '',
 			users: ['581b5368e4700fab384fc1c3']
 		}
-
+	
 	$ionicModal.fromTemplateUrl('new-budget.html', {
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -42,7 +42,6 @@ app.controller('BudgetsCtrl', function($scope, $ionicModal, $ionicLoading, $http
 		}
 	 }
 })
-
 
 app.controller('BudgetCtrl', function($scope, $ionicModal, $ionicLoading, $stateParams, $http) {
 
