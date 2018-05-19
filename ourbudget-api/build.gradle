@@ -29,19 +29,15 @@ repositories{
 }
 
 
-
-
-
-
 dependencies{
 
-	compile 'org.jboss.weld.se:weld-se:2.3.5.Final'
-	compile 'org.scala-lang:scala-library:2.11.8'
+    compile 'org.jboss.weld.se:weld-se:2.3.5.Final'
+    compile 'org.scala-lang:scala-library:2.11.8'
     compile 'org.scalatra:scalatra_2.11:2.4.0'
     compile 'org.scalatra:scalatra-scalate_2.11:2.4.0'
     compile 'org.scalatra:scalatra-json_2.11:2.4.0'
-	compile 'org.scalaj:scalaj-http_2.11:2.3.0'
-  	compile 'org.json4s:json4s-jackson_2.11:3.3.0'
+    compile 'org.scalaj:scalaj-http_2.11:2.3.0'
+    compile 'org.json4s:json4s-jackson_2.11:3.3.0'
     compile 'org.eclipse.jetty:jetty-webapp:9.3.9.v20160517'
     compile 'org.scalactic:scalactic_2.11:3.0.0'
     compile 'org.mongodb:mongo-java-driver:3.6.2'
