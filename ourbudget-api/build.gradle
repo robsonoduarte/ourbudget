@@ -28,7 +28,6 @@ repositories{
 	mavenCentral()
 }
 
-
 dependencies{
 
     compile 'org.jboss.weld.se:weld-se:2.3.5.Final'
@@ -43,9 +42,6 @@ dependencies{
     compile 'org.mongodb:mongo-java-driver:3.6.2'
     compile 'org.springframework.data:spring-data-mongodb:1.9.2.RELEASE'
 }
-
-
-
 
 
 
