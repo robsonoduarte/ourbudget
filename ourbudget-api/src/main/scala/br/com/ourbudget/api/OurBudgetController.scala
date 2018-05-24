@@ -118,8 +118,7 @@ class OurBudgetController extends ScalatraServlet with JacksonJsonSupport {
   
   
   
-  
-  
+
   
   
   
